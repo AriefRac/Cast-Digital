@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ariefrac.github.io/Cast-Digital/sitemap.xml
+Sitemap: https://castdigital.example/sitemap.xml

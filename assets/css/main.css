@@ -3,8 +3,31 @@
    Brand: Blue #2230F2 · Cyan #25F8FF · Black · White
    Fonts: Boston Angel (headline) → fallback DM Serif Display, DM Sans (body)
    Untuk memakai Boston Angel asli: taruh file di assets/fonts/boston-angel.woff2
-   lalu aktifkan blok @font-face di bawah.
+   lalu aktifkan blok @font-face Boston Angel di bawah (butuh lisensi webfont).
    ========================================================= */
+
+/* DM Sans & DM Serif Display: SIL Open Font License, file lisensi wajib ikut (assets/fonts/OFL-*.txt) */
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/dm-sans-latin.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Serif Display";
+  src: url("../fonts/dm-serif-display-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Serif Display";
+  src: url("../fonts/dm-serif-display-italic-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
 
 /*
 @font-face {
@@ -54,6 +77,7 @@ body {
   overflow-x: hidden;
 }
 img, video { display: block; max-width: 100%; }
+.sprite { position: absolute; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea { font: inherit; color: inherit; }
 h1, h2, h3 { margin: 0; line-height: 1.08; font-weight: 400; }
@@ -467,9 +491,10 @@ section { padding-block: clamp(72px, 10vw, 120px); }
 
 /* ---------- Halaman sederhana (404) ---------- */
 .page-simple { min-height: 100vh; display: flex; flex-direction: column; }
-.page-simple main { flex: 1; padding-block: clamp(48px, 8vw, 96px); }
-.page-simple .section-head { margin-inline: auto; text-align: center; max-width: 640px; }
-.page-simple .section-head .kicker::before { display: none; }
+.page-simple main { flex: 1; padding-block: clamp(48px, 8vw, 96px); display: grid; place-items: center; text-align: center; }
+.page-simple .kicker { justify-content: center; }
+.page-simple h1 { font-size: clamp(40px, 6vw, 72px); margin-bottom: 18px; }
+.page-simple .section-note { margin: 0 auto 28px; }
 
 /* =========================================================
    Responsive

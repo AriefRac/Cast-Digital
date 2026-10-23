@@ -49,29 +49,33 @@ const revealObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // ---------- Video: dimuat & diputar hanya saat terlihat ----------
-const lazyVideos = document.querySelectorAll('video[data-src]');
+const loadVideo = video => {
+  if (video.src) return;
+  video.src = video.dataset.src;
+  video.preload = 'metadata';
+};
 const videoObserver = new IntersectionObserver(entries => {
   entries.forEach(({ target: video, isIntersecting }) => {
     if (isIntersecting) {
-      if (!video.src) {
-        video.src = video.dataset.src;
-        video.preload = 'metadata';
-      }
+      loadVideo(video);
       video.play().catch(() => {});
     } else if (!video.paused) {
       video.pause();
     }
   });
 }, { threshold: 0.25 });
-lazyVideos.forEach(video => {
-  video.muted = true;
-  videoObserver.observe(video);
-});
+const lazyVideos = document.querySelectorAll('video[data-src]');
+lazyVideos.forEach(video => { video.muted = true; });
+// Video baru diunduh setelah halaman selesai dimuat agar tidak berebut bandwidth dengan teks & gambar.
+const startVideos = () => lazyVideos.forEach(video => videoObserver.observe(video));
+if (document.readyState === 'complete') startVideos();
+else window.addEventListener('load', startVideos, { once: true });
 
 const phoneVideo = document.querySelector('.phone-video');
 const soundButton = document.querySelector('.phone-sound');
 if (phoneVideo && soundButton) {
   soundButton.addEventListener('click', () => {
+    loadVideo(phoneVideo);
     phoneVideo.muted = !phoneVideo.muted;
     if (!phoneVideo.muted) phoneVideo.play().catch(() => {});
     soundButton.textContent = phoneVideo.muted ? 'Nyalakan suara' : 'Matikan suara';
