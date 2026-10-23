@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tulis Testimoni — CAST Digital</title>
+<meta name="description" content="Bagikan pengalaman kamu bekerja bersama CAST Digital.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2230F2">
+<link rel="icon" href="assets/img/brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="page-simple">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="CAST Digital, kembali ke beranda">
+      <img src="assets/img/brand/logo-blue.svg" alt="CAST Digital" width="148" height="48">
+    </a>
+    <a class="link-arrow" href="index.html" style="margin-left:auto">Kembali ke beranda</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="section-head">
+      <p class="kicker">Testimoni Klien</p>
+      <h1 style="font-size:clamp(36px,5vw,56px)">Gimana rasanya kerja <em>#WithCAST?</em></h1>
+      <p class="section-note" style="margin:18px auto 0;max-width:520px">Ceritamu bantu brand lain kenal CAST. Testimoni akan tampil di website setelah ditinjau tim kami.</p>
+    </div>
+
+    <form class="lead-form" id="testimonialForm">
+      <label class="field">
+        <span>Nama</span>
+        <input name="name" type="text" minlength="2" maxlength="80" autocomplete="name" required>
+      </label>
+      <label class="field">
+        <span>Brand / perusahaan</span>
+        <input name="company" type="text" minlength="2" maxlength="120" autocomplete="organization" required>
+      </label>
+      <label class="field">
+        <span>Jabatan <small>(opsional)</small></span>
+        <input name="role" type="text" maxlength="80" autocomplete="organization-title" placeholder="cth. Owner">
+      </label>
+      <label class="field">
+        <span>Testimoni</span>
+        <textarea name="quote" rows="5" minlength="10" maxlength="1000" required placeholder="Ceritakan pengalaman dan hasil yang kamu rasakan."></textarea>
+      </label>
+      <label class="consent">
+        <input type="checkbox" name="consent" required>
+        <span>Saya setuju nama, brand, dan testimoni ini ditampilkan di website CAST Digital.</span>
+      </label>
+      <button class="btn btn-primary btn-lg btn-block" type="submit">Kirim Testimoni</button>
+      <p class="form-status" id="testimonialStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom">
+    <p>© 2026 CAST Digital · #WithCAST</p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/testimoni-form.js"></script>
+</body>
+</html>
