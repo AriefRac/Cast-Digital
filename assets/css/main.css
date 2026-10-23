@@ -495,7 +495,9 @@ section { padding-block: clamp(72px, 10vw, 120px); }
   .burger span { display: block; width: 18px; height: 2px; background: #fff; transition: transform .25s; }
   .burger[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
   .burger[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
-  .header-cta { margin-left: auto; }
+  /* Di HP, CTA WA cukup lewat tombol melayang + tombol di dalam menu */
+  .header-cta { display: none; }
+  .burger { margin-left: auto; }
   .main-nav {
     position: fixed; inset: calc(var(--header-h) + env(safe-area-inset-top, 0px)) 0 auto 0; margin: 0;
     flex-direction: column; align-items: stretch; gap: 0;
@@ -525,8 +527,6 @@ section { padding-block: clamp(72px, 10vw, 120px); }
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .container { padding-inline: 18px; }
-  .header-cta span { display: none; }
-  .header-cta { padding: 12px; }
   .brand img { height: 38px; }
   .hero-actions .btn { width: 100%; }
   .hero-proof li { min-width: 0; padding-right: 12px; }
@@ -547,6 +547,11 @@ section { padding-block: clamp(72px, 10vw, 120px); }
   .footer-grid { grid-template-columns: 1fr; }
   .wa-float span { display: none; }
   .wa-float { padding: 14px; }
+}
+
+/* Di desktop, CTA WA cukup lewat tombol di navbar */
+@media (min-width: 961px) {
+  .wa-float { display: none; }
 }
 
 /* HP kecil (≤ 400px, mis. iPhone SE) */
