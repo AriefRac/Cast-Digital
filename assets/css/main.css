@@ -361,7 +361,7 @@ section { padding-block: clamp(72px, 10vw, 120px); }
 .bts-track img { height: 220px; width: auto; margin-right: 14px; border-radius: 16px; object-fit: cover; }
 
 /* ---------- Testimonials ---------- */
-.testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 20px; }
 .testi {
   margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px;
   display: flex; flex-direction: column; gap: 22px;
@@ -465,17 +465,11 @@ section { padding-block: clamp(72px, 10vw, 120px); }
 .d3 { transition-delay: .24s !important; }
 .d4 { transition-delay: .32s !important; }
 
-/* ---------- Testimoni page ---------- */
+/* ---------- Halaman sederhana (404) ---------- */
 .page-simple { min-height: 100vh; display: flex; flex-direction: column; }
 .page-simple main { flex: 1; padding-block: clamp(48px, 8vw, 96px); }
-.page-simple .lead-form { max-width: 640px; margin-inline: auto; }
 .page-simple .section-head { margin-inline: auto; text-align: center; max-width: 640px; }
 .page-simple .section-head .kicker::before { display: none; }
-.form-status { font-size: 14px; font-weight: 600; text-align: center; }
-.form-status[data-state="success"] { color: #1B7F3B; }
-.form-status[data-state="error"] { color: #C62828; }
-.consent { display: flex; gap: 10px; font-size: 14px; color: var(--muted); align-items: flex-start; }
-.consent input { margin-top: 4px; accent-color: var(--blue); }
 
 /* =========================================================
    Responsive

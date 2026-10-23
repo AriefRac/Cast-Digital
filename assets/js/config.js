@@ -12,12 +12,5 @@ window.CAST_CONFIG = {
     price: 'Halo CAST Digital, saya mau tanya harga. Kebutuhan dan budget saya kira-kira: ',
     pain: 'Halo CAST Digital, saya mau cerita soal kondisi sosmed brand saya: ',
     faq: 'Halo CAST Digital, saya ada pertanyaan: '
-  },
-
-  // Supabase untuk testimoni. Publishable key memang aman dipakai di frontend
-  // selama Row Level Security aktif (lihat supabase/schema.sql).
-  supabase: {
-    url: 'https://wocqtimcvshpxirvtxeo.supabase.co',
-    anonKey: 'sb_publishable_txvEgjzfcsH3aLdXZSbAvw_0DWExmt-'
   }
 };

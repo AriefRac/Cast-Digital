@@ -8,17 +8,14 @@ Situs statis murni (HTML/CSS/JS), tanpa build tool — bisa langsung di-deploy k
 
 ```
 index.html            Landing page
-testimoni.html        Form testimoni untuk klien (tidak ditautkan dari navigasi utama)
+404.html              Halaman tidak ditemukan
 assets/
   css/main.css        Seluruh style + token warna brand
-  js/config.js        Nomor WA, template pesan WA, konfigurasi Supabase
+  js/config.js        Nomor WA dan template pesan WA
   js/wa.js            Pembuat link WA + tracking klik (GA4 / GTM / Meta Pixel)
   js/main.js          Navigasi, animasi, video, dialog karya, FAQ, form konsultasi
-  js/testimonials.js  Memuat testimoni yang sudah disetujui
-  js/testimoni-form.js
   img/                brand, clients, team, bts, services, work, posters
   video/              Video yang sudah dikompres (≤ 5 MB)
-supabase/schema.sql   Tabel & RLS testimoni
 docs/brand/           Brand guideline & company profile (sumber, tidak dipakai situs)
 ```
 
@@ -35,7 +32,7 @@ Buka http://localhost:8000.
 - **Ganti nomor / isi pesan WhatsApp:** `assets/js/config.js`. Setiap tombol punya atribut `data-wa="..."` yang menentukan template pesannya.
 - **Tambah logo klien:** taruh PNG transparan di `assets/img/clients/`, lalu tambahkan `<li>` di kedua `<ul class="logo-track">` di `index.html` (yang kedua adalah duplikat untuk animasi). Klien tanpa logo memakai `<li class="wordmark">Nama</li>`.
 - **Tambah hasil karya:** salin satu `<button class="work-card">` di section `#karya`. Video sebaiknya vertikal 9:16, dikompres ≤ 5 MB, dan diberi poster di `assets/img/posters/`.
-- **Menyetujui testimoni:** di dashboard Supabase, ubah `is_approved` menjadi `true`. Section testimoni muncul otomatis bila ada minimal satu testimoni yang disetujui.
+- **Testimoni:** edit `<figure class="testi">` di section `#testimoni` pada `index.html`. Isi saat ini masih dummy — ganti dengan testimoni asli (dan izin) dari klien.
 - **Font Boston Angel:** taruh `boston-angel.woff2` di `assets/fonts/` lalu aktifkan blok `@font-face` di awal `main.css`. Sebelum itu, headline memakai DM Serif Display.
 - **Tracking konversi:** pasang snippet GA4/GTM/Meta Pixel di `<head>`. Setiap klik WA otomatis mengirim event `wa_click` (dataLayer), `generate_lead` (gtag), dan `Contact` (fbq).
 
@@ -48,7 +45,7 @@ ffmpeg -i input.mp4 -vf "scale=720:-2" -c:v libx264 -crf 28 -preset slow -movfla
 ## Deploy
 
 Setiap push ke `main` otomatis di-deploy ke GitHub Pages lewat `.github/workflows/pages.yml`
-(hanya file situs; `docs/` dan `supabase/` tidak ikut dipublikasikan).
+(hanya file situs; `docs/` tidak ikut dipublikasikan).
 
 Saat pindah ke domain sendiri, ganti `https://ariefrac.github.io/Cast-Digital/` di `index.html`
 (canonical, og:url, og:image, JSON-LD), `robots.txt`, dan `sitemap.xml`, serta path `/Cast-Digital/` di `404.html`.
