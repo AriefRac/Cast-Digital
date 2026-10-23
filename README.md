@@ -44,3 +44,11 @@ Buka http://localhost:8000.
 ```
 ffmpeg -i input.mp4 -vf "scale=720:-2" -c:v libx264 -crf 28 -preset slow -movflags +faststart -c:a aac -b:a 96k output.mp4
 ```
+
+## Deploy
+
+Setiap push ke `main` otomatis di-deploy ke GitHub Pages lewat `.github/workflows/pages.yml`
+(hanya file situs; `docs/` dan `supabase/` tidak ikut dipublikasikan).
+
+Saat pindah ke domain sendiri, ganti `https://ariefrac.github.io/Cast-Digital/` di `index.html`
+(canonical, og:url, og:image, JSON-LD), `robots.txt`, dan `sitemap.xml`, serta path `/Cast-Digital/` di `404.html`.
