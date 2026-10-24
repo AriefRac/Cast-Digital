@@ -16,10 +16,9 @@ document.addEventListener('keydown', event => {
   if (event.key === 'Escape') setNav(false);
 });
 
-// Dipanggil sekali di awal juga, supaya header langsung benar saat halaman dibuka di tengah (reload / link #anchor).
-const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
-updateHeader();
-window.addEventListener('scroll', updateHeader, { passive: true });
+window.addEventListener('scroll', () => {
+  header.classList.toggle('is-scrolled', window.scrollY > 10);
+}, { passive: true });
 
 // Tombol WA mengambang muncul setelah hero lewat, dan sembunyi saat form kontak terlihat.
 if (hero && waFloat) {
@@ -83,29 +82,6 @@ if (phoneVideo && soundButton) {
     soundButton.setAttribute('aria-pressed', String(!phoneVideo.muted));
   });
 }
-
-// ---------- Tab jenis hasil karya ----------
-// Video di panel tersembunyi tidak terlihat, jadi videoObserver otomatis menjeda/menunda memuatnya.
-const workTabs = [...document.querySelectorAll('.work-tab')];
-const selectWorkTab = (tab, focus) => {
-  workTabs.forEach(other => {
-    const selected = other === tab;
-    other.setAttribute('aria-selected', String(selected));
-    other.tabIndex = selected ? 0 : -1;
-    document.getElementById(other.getAttribute('aria-controls')).hidden = !selected;
-  });
-  if (focus) tab.focus();
-};
-workTabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => selectWorkTab(tab));
-  tab.addEventListener('keydown', event => {
-    const last = workTabs.length - 1;
-    const target = { ArrowRight: index === last ? 0 : index + 1, ArrowLeft: index === 0 ? last : index - 1, Home: 0, End: last }[event.key];
-    if (target === undefined) return;
-    event.preventDefault();
-    selectWorkTab(workTabs[target], true);
-  });
-});
 
 // ---------- Dialog hasil karya ----------
 const dialog = document.getElementById('mediaDialog');
