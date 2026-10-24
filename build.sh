@@ -18,4 +18,8 @@ for file in _site/index.html _site/robots.txt _site/sitemap.xml; do
 done
 sed -i "s|<lastmod>[^<]*</lastmod>|<lastmod>$(date -u +%Y-%m-%d)</lastmod>|" _site/sitemap.xml
 
+# Versi di URL CSS/JS supaya browser tidak memakai file lama dari cache setelah deploy
+VERSION=$(date -u +%Y%m%d%H%M%S)
+sed -i "s|assets/css/main.css\"|assets/css/main.css?v=$VERSION\"|; s|assets/js/main.js\"|assets/js/main.js?v=$VERSION\"|" _site/index.html _site/404.html
+
 echo "Situs siap di _site untuk $SITE_URL"
