@@ -204,7 +204,9 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .site-header { position: sticky; top: 0; z-index: 100; padding-top: env(safe-area-inset-top, 0px); }
 .site-header::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: var(--blue); box-shadow: 0 12px 32px -18px rgba(5, 6, 26, .55);
+  background: color-mix(in srgb, var(--blue) 86%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .12), 0 12px 32px -18px rgba(5, 6, 26, .55);
   opacity: 0; transition: opacity .3s;
 }
 .site-header.is-scrolled::before { opacity: 1; }
@@ -213,13 +215,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .brand img { grid-area: 1 / 1; height: 40px; width: auto; transition: opacity .3s; }
 .site-header:not(.is-scrolled) .brand-white,
 .site-header.is-scrolled .brand-blue { opacity: 0; }
-.main-nav {
-  margin-left: auto; display: flex; align-items: center; gap: 2px;
-  padding: 6px 6px 6px 10px; border-radius: 999px;
-  background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14);
-  -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
-  box-shadow: 0 12px 32px -14px rgba(0, 0, 0, .6);
-}
+.main-nav { margin-left: auto; display: flex; align-items: center; gap: 2px; }
 .main-nav a:not(.btn) { padding: 10px 14px; border-radius: 999px; font-size: 12px; transition: background-color .2s, color .2s; }
 .main-nav a:not(.btn):hover { background: rgba(255, 255, 255, .1); color: var(--accent); }
 .nav-cta { margin-left: 8px; padding: 12px 18px; font-size: 14px; }
@@ -643,11 +639,10 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 }
 
 @media (min-width: 961px) {
-  /* Nav desktop di atas hero terang: kaca putih, teks gelap, tombol biru */
+  /* Nav desktop di atas hero terang: teks gelap, tombol biru */
   .site-header:not(.is-scrolled) .main-nav {
     --accent: var(--blue); --accent-ink: #fff; --btn-hover: var(--navy);
-    color: var(--ink); background: rgba(255, 255, 255, .62); border-color: rgba(12, 13, 26, .08);
-    box-shadow: 0 12px 32px -18px rgba(12, 13, 26, .35);
+    color: var(--ink);
   }
   .site-header:not(.is-scrolled) .main-nav a:not(.btn):hover { background: rgba(12, 13, 26, .06); }
   .about-grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); }
