@@ -377,24 +377,12 @@ section { padding-block: clamp(72px, 10vw, 120px); }
 .step h3 { font-family: var(--font-display); font-size: 26px; margin-bottom: 10px; }
 .step p { color: var(--muted); }
 
-/* ---------- Team ---------- */
-.team { background: var(--paper); overflow: hidden; }
-.team-rail {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
-  max-width: var(--container); margin-inline: auto; padding-inline: 24px;
-}
-.member { margin: 0; border-radius: var(--radius); overflow: hidden; transition: transform .35s var(--ease); }
-.member:nth-child(odd) { transform: translateY(18px); }
-.member:hover { transform: translateY(-6px) rotate(-1deg); }
-.member img { width: 100%; height: auto; }
-.bts { margin-top: 72px; overflow: hidden; }
-.bts-track { display: flex; width: max-content; animation: marquee 50s linear infinite; }
-.bts-track img { height: 220px; width: auto; margin-right: 14px; border-radius: 16px; object-fit: cover; }
-
 /* ---------- Testimonials ---------- */
+/* Putih, supaya selang-seling dengan Proses & FAQ yang cream */
+.testimonials { background: var(--paper); }
 .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 20px; }
 .testi {
-  margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px;
+  margin: 0; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px;
   display: flex; flex-direction: column; gap: 22px;
 }
 .testi blockquote { margin: 0; font-size: 18px; line-height: 1.55; }
@@ -490,7 +478,6 @@ section { padding-block: clamp(72px, 10vw, 120px); }
 /* ---------- Reveal ---------- */
 .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .js .reveal.is-in { opacity: 1; transform: none; }
-.js .member.reveal.is-in:nth-child(odd) { transform: translateY(18px); }
 .d1 { transition-delay: .08s !important; }
 .d2 { transition-delay: .16s !important; }
 .d3 { transition-delay: .24s !important; }
@@ -508,8 +495,6 @@ section { padding-block: clamp(72px, 10vw, 120px); }
    ========================================================= */
 @media (max-width: 1080px) {
   .pain-grid { grid-template-columns: repeat(2, 1fr); }
-  .team-rail { grid-template-columns: repeat(5, minmax(200px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 28px; }
-  .member { scroll-snap-align: start; }
 }
 
 @media (max-width: 960px) {
@@ -567,9 +552,6 @@ section { padding-block: clamp(72px, 10vw, 120px); }
   .pain-answer { padding: 24px; }
   .pain-answer .btn { width: 100%; }
   .steps { grid-template-columns: 1fr; }
-  .team-rail { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 62%; padding-inline: 18px; }
-  .member:nth-child(odd), .js .member.reveal.is-in:nth-child(odd) { transform: none; }
-  .bts-track img { height: 160px; }
   .work-foot .btn { width: 100%; }
   .footer-grid { grid-template-columns: 1fr; }
   .wa-float span { display: none; }
