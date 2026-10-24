@@ -14,7 +14,7 @@ _headers              Header keamanan (CSP, dll.) & cache untuk Cloudflare Pages
 robots.txt, sitemap.xml
 assets/
   css/main.css        Seluruh style, token warna (palet), @font-face
-  fonts/              Archivo, DM Mono & DM Sans (woff2) + lisensi OFL (wajib ikut)
+  fonts/              DM Serif Display, DM Mono & DM Sans (woff2) + lisensi OFL (wajib ikut)
   js/config.js        Nomor WA dan template pesan WA
   js/wa.js            Pembuat link WA + tracking klik
   js/main.js          Navigasi, animasi, video, dialog karya, FAQ, form konsultasi
@@ -51,14 +51,13 @@ Semua font di-host sendiri di `assets/fonts/` karena CSP hanya mengizinkan font 
 
 | Peran | Font | File | Sumber |
 |---|---|---|---|
-| Headline | Archivo variable, dipakai dengan `font-stretch: 62%`, weight 800, kapital | `archivo-latin-wdth.woff2` | `npm pack @fontsource-variable/archivo` → `files/archivo-latin-wdth-normal.woff2` |
+| Headline | DM Serif Display 400 + italic (pengganti gratis Boston Angel) | `dm-serif-display-latin.woff2`, `dm-serif-display-italic-latin.woff2` | Google Fonts / `@fontsource/dm-serif-display` |
 | Label | DM Mono 500 | `dm-mono-latin-500.woff2` | `npm pack @fontsource/dm-mono` → `files/dm-mono-latin-500-normal.woff2` |
 | Body | DM Sans (font brand) | `dm-sans-latin.woff2` | sudah ada sejak awal |
 
 - Lisensi masing-masing (SIL OFL) ada di `assets/fonts/OFL-*.txt` dan wajib ikut dipublikasikan.
-- `@font-face` Archivo wajib memuat `font-stretch: 62% 125%` dan `font-weight: 100 900`; tanpa itu browser tidak memakai sumbu lebar (wdth) font variabel.
-- Subset latin Archivo tidak punya tanda hubung tak-putus (U+2011). Untuk kata berhubung yang tidak boleh patah, pakai tanda hubung biasa di dalam `<span class="nowrap">`.
-- Headline font brand (Boston Angel) tidak dipakai di desain ini; gayanya diganti headline condensed. Bricolage Grotesque juga sempat diuji, tapi tidak dipakai karena garis di dalam hurufnya tumpang-tindih saat diberi outline.
+- Panduan brand memakai **Boston Angel** untuk headline. Font itu berbayar, jadi sementara diganti DM Serif Display yang bentuknya paling mirip. Kalau file Boston Angel berlisensi web sudah ada, ganti `@font-face` dan `--font-display` di `main.css`.
+- Untuk kata berhubung yang tidak boleh patah, pakai tanda hubung biasa di dalam `<span class="nowrap">`.
 - Kalau font diganti, sesuaikan juga `<link rel="preload">` di `<head>` `index.html`.
 
 ### Mengganti palet

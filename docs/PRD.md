@@ -4,7 +4,7 @@ Catatan keputusan penting untuk landing page (`index.html`). Update setiap ada r
 
 ## Desain
 
-- **Gaya yang dipakai: desain OOB** — bold condensed (Archivo + DM Mono), section biru brand `#2230F2` dan putih, aksen cyan.
+- **Gaya yang dipakai: desain OOB** — headline serif DM Serif Display (pengganti gratis **Boston Angel** dari panduan brand; ganti ke Boston Angel kalau file berlisensi web tersedia), body DM Sans, label DM Mono, section biru brand `#2230F2` dan putih, aksen cyan.
   - Section "Tentang" dari revisi lama **ditolak** (dinilai jelek). Jangan dipakai lagi tanpa persetujuan.
   - **Hero memakai gradien terang:** putih di kiri memudar ke biru → cyan di kanan/bawah (di HP memudar ke bawah), teks gelap. Pita audiens ada di ujung bawah hero.
   - Versi cream lama juga tidak dipakai.
