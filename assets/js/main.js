@@ -83,6 +83,29 @@ if (phoneVideo && soundButton) {
   });
 }
 
+// ---------- Tab jenis hasil karya ----------
+// Video di panel tersembunyi tidak terlihat, jadi videoObserver otomatis menjeda/menunda memuatnya.
+const workTabs = [...document.querySelectorAll('.work-tab')];
+const selectWorkTab = (tab, focus) => {
+  workTabs.forEach(other => {
+    const selected = other === tab;
+    other.setAttribute('aria-selected', String(selected));
+    other.tabIndex = selected ? 0 : -1;
+    document.getElementById(other.getAttribute('aria-controls')).hidden = !selected;
+  });
+  if (focus) tab.focus();
+};
+workTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectWorkTab(tab));
+  tab.addEventListener('keydown', event => {
+    const last = workTabs.length - 1;
+    const target = { ArrowRight: index === last ? 0 : index + 1, ArrowLeft: index === 0 ? last : index - 1, Home: 0, End: last }[event.key];
+    if (target === undefined) return;
+    event.preventDefault();
+    selectWorkTab(workTabs[target], true);
+  });
+});
+
 // ---------- Dialog hasil karya ----------
 const dialog = document.getElementById('mediaDialog');
 const dialogStage = dialog.querySelector('.media-dialog-stage');

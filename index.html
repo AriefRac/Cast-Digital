@@ -263,38 +263,57 @@
         <p class="kicker">Hasil Karya</p>
         <h2>Konten yang sudah tayang untuk klien kami.</h2>
       </div>
-      <p class="section-note">Ketuk kartu untuk menonton dengan suara.</p>
+      <p class="section-note">Pilih jenis konten, lalu ketuk kartu untuk melihat lebih dekat.</p>
+    </div>
+    <div class="work-tabs reveal" role="tablist" aria-label="Jenis hasil karya">
+      <button class="work-tab" type="button" role="tab" id="tab-reels" aria-controls="panel-reels" aria-selected="true">Reels <span class="work-tab-count">2</span></button>
+      <button class="work-tab" type="button" role="tab" id="tab-design" aria-controls="panel-design" aria-selected="false" tabindex="-1">Design <span class="work-tab-count">3</span></button>
+      <button class="work-tab" type="button" role="tab" id="tab-entertainment" aria-controls="panel-entertainment" aria-selected="false" tabindex="-1">Entertainment <span class="work-tab-count">1</span></button>
     </div>
   </div>
-  <div class="work-rail" tabindex="0" aria-label="Daftar hasil karya, geser untuk melihat lainnya">
-    <button class="work-card" type="button" data-media="assets/video/isell-reels.mp4" data-title="iSell · Reels">
-      <video data-src="assets/video/previews/isell-reels.mp4" poster="assets/img/posters/isell-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="work-meta"><span class="work-tag">Reels</span><strong>iSell</strong><span>iPhone Specialist Kota Serang</span></span>
-      <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/video/abinaya-reels.mp4" data-title="Abinaya Desain · Reels">
-      <video data-src="assets/video/previews/abinaya-reels.mp4" poster="assets/img/posters/abinaya-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="work-meta"><span class="work-tag">Reels</span><strong>Abinaya Desain</strong><span>Desain interior</span></span>
-      <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/video/isell-entertainment.mp4" data-title="iSell · Video Entertainment">
-      <video data-src="assets/video/previews/isell-entertainment.mp4" poster="assets/img/posters/isell-entertainment.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="work-meta"><span class="work-tag">Entertainment</span><strong>iSell</strong><span>Konten hiburan untuk engagement</span></span>
-      <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/img/work/isell-design.webp" data-title="iSell · Desain Promosi">
-      <img src="assets/img/work/isell-design.webp" alt="" loading="lazy" width="900" height="1200">
-      <span class="work-meta"><span class="work-tag">Design</span><strong>iSell</strong><span>Desain promo iPhone sale</span></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/video/enter-english-reels.mp4" data-title="Enter English · Konten Promosi">
-      <video data-src="assets/video/previews/enter-english-reels.mp4" poster="assets/img/posters/enter-english-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="work-meta"><span class="work-tag">Design</span><strong>Enter English</strong><span>Lembaga kursus bahasa Inggris</span></span>
-      <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/img/services/event-coverage.webp" data-title="FKP Kota Serang · Event Piala Ibu Kota">
-      <img src="assets/img/services/event-coverage.webp" alt="" loading="lazy" width="675" height="900">
-      <span class="work-meta"><span class="work-tag">Event</span><strong>FKP Kota Serang</strong><span>Festival Kreatif · Piala Ibu Kota</span></span>
-    </button>
+
+  <!-- Satu panel per jenis karya. Kalau menambah kartu, perbarui juga angka .work-tab-count di tab-nya -->
+  <div class="work-panel" id="panel-reels" role="tabpanel" aria-labelledby="tab-reels">
+    <div class="work-rail" tabindex="0" aria-label="Daftar Reels, geser untuk melihat lainnya">
+      <button class="work-card" type="button" data-media="assets/video/isell-reels.mp4" data-title="iSell · Reels">
+        <video data-src="assets/video/previews/isell-reels.mp4" poster="assets/img/posters/isell-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="work-meta"><strong>iSell</strong><span>iPhone Specialist Kota Serang</span></span>
+        <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+      </button>
+      <button class="work-card" type="button" data-media="assets/video/abinaya-reels.mp4" data-title="Abinaya Desain · Reels">
+        <video data-src="assets/video/previews/abinaya-reels.mp4" poster="assets/img/posters/abinaya-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="work-meta"><strong>Abinaya Desain</strong><span>Desain interior</span></span>
+        <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="work-panel" id="panel-design" role="tabpanel" aria-labelledby="tab-design" hidden>
+    <div class="work-rail" tabindex="0" aria-label="Daftar desain, geser untuk melihat lainnya">
+      <button class="work-card" type="button" data-media="assets/img/work/isell-design.webp" data-title="iSell · Desain Promosi">
+        <img src="assets/img/work/isell-design.webp" alt="" loading="lazy" width="900" height="1200">
+        <span class="work-meta"><strong>iSell</strong><span>Desain promo iPhone sale</span></span>
+      </button>
+      <button class="work-card" type="button" data-media="assets/video/enter-english-reels.mp4" data-title="Enter English · Desain Social Media">
+        <video data-src="assets/video/previews/enter-english-reels.mp4" poster="assets/img/posters/enter-english-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="work-meta"><strong>Enter English</strong><span>Feed &amp; thumbnail Reels kursus bahasa Inggris</span></span>
+        <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+      </button>
+      <button class="work-card" type="button" data-media="assets/img/services/event-coverage.webp" data-title="FKP Kota Serang · Poster Piala Ibu Kota">
+        <img src="assets/img/services/event-coverage.webp" alt="" loading="lazy" width="675" height="900">
+        <span class="work-meta"><strong>FKP Kota Serang</strong><span>Poster event Piala Ibu Kota</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="work-panel" id="panel-entertainment" role="tabpanel" aria-labelledby="tab-entertainment" hidden>
+    <div class="work-rail" tabindex="0" aria-label="Daftar video entertainment, geser untuk melihat lainnya">
+      <button class="work-card" type="button" data-media="assets/video/isell-entertainment.mp4" data-title="iSell · Video Entertainment">
+        <video data-src="assets/video/previews/isell-entertainment.mp4" poster="assets/img/posters/isell-entertainment.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="work-meta"><strong>iSell</strong><span>Konten hiburan untuk engagement</span></span>
+        <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+      </button>
+    </div>
   </div>
   <div class="container work-foot reveal">
     <p>Mau konten seperti ini untuk brand kamu?</p>

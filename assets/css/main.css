@@ -136,7 +136,7 @@ h1, h2, h3,
   line-height: .9;
 }
 /* Suara kedua: label mono kapital dengan letter-spacing lebar */
-.kicker, .eyebrow, .clients-title, .service-tagline, .tags li, .work-tag, .step-num, .phone-label, .phone-sound,
+.kicker, .eyebrow, .clients-title, .service-tagline, .tags li, .work-tab, .step-num, .phone-label, .phone-sound,
 .link-circle, .chat-status, .bubble-from, .hero-proof span, .case-cat, .case-metrics dt, .footer-col h3, .main-nav a:not(.btn) {
   font-family: var(--font-mono);
   font-stretch: normal;
@@ -377,6 +377,19 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .service-body .link-arrow { margin-top: 6px; }
 
 /* ---------- Work ---------- */
+/* Tab jenis karya (Reels / Design / Entertainment); panel yang tidak aktif disembunyikan lewat atribut hidden */
+.work-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.work-tab {
+  display: inline-flex; align-items: center; gap: 10px; padding: 12px 14px 12px 20px; border-radius: 999px; cursor: pointer;
+  background: var(--glass); border: 1px solid var(--line); color: var(--fg); font-size: 12.5px;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.work-tab:hover { border-color: color-mix(in srgb, var(--fg) 45%, transparent); }
+.work-tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.work-tab-count {
+  min-width: 26px; height: 26px; padding-inline: 7px; border-radius: 999px; display: grid; place-items: center;
+  background: color-mix(in srgb, currentColor 14%, transparent); font-size: 11px; letter-spacing: 0;
+}
 .work-rail {
   display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 24vw, 290px); gap: 18px;
   --rail-pad: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
@@ -395,10 +408,6 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .work-meta { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 1; display: grid; gap: 4px; }
 .work-meta strong { font-size: 32px; line-height: .95; }
 .work-meta > span:last-child { font-size: 14px; line-height: 1.4; color: rgba(255, 255, 255, .8); }
-.work-tag {
-  justify-self: start; margin-bottom: 8px; padding: 6px 10px; border-radius: 999px;
-  background: var(--accent); color: var(--accent-ink); font-size: 10.5px; letter-spacing: .12em; line-height: 1.2;
-}
 .work-play {
   position: absolute; top: 14px; right: 14px; z-index: 1;
   width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
@@ -666,6 +675,10 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .hero-actions .btn, .pain-cta, .work-foot .btn { width: 100%; }
+  /* Tiga tab muat satu baris: huruf dirapatkan, angka jumlah karya disembunyikan */
+  .work-tabs { flex-wrap: nowrap; }
+  .work-tab { flex: 1 1 auto; justify-content: center; padding: 12px 10px; font-size: 11px; letter-spacing: .1em; }
+  .work-tab-count { display: none; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 

@@ -5,7 +5,7 @@ Catatan keputusan penting untuk landing page (`index.html`). Update setiap ada r
 ## Desain
 
 - **Gaya yang dipakai: desain OOB** — bold condensed (Archivo + DM Mono), section biru brand `#2230F2` dan putih, aksen cyan.
-  - Revisi "section Tentang + tab karya" **ditolak** (dinilai jelek). Jangan dipakai lagi tanpa persetujuan.
+  - Section "Tentang" dari revisi lama **ditolak** (dinilai jelek). Jangan dipakai lagi tanpa persetujuan.
   - **Hero memakai gradien terang:** putih di kiri memudar ke biru → cyan di kanan/bawah (di HP memudar ke bawah), teks gelap. Pita audiens ada di ujung bawah hero.
   - Versi cream lama juga tidak dipakai.
 - **Navbar:** transparan di atas hero (logo biru, teks gelap); setelah scroll jadi **satu bar glass biru full-width**. **Jangan** ada kapsul/pill glass terpisah di sekitar menu di atas bar (tampak "double").
@@ -28,6 +28,7 @@ Catatan keputusan penting untuk landing page (`index.html`). Update setiap ada r
 
 ## Konten
 
+- **Hasil Karya dipisah per jenis lewat tab: Reels, Design, Entertainment.** Poster event (FKP Piala Ibu Kota) masuk Design. Kalau menambah kartu, perbarui angka jumlah di tab-nya.
 - **Section Tim dihapus** (foto anggota tim + marquee behind-the-scenes), juga link "Tim" di navbar. Gambar di `assets/img/team/` dan `assets/img/bts/` masih disimpan kalau nanti dipakai lagi.
 - **Testimoni masih dummy** dan disembunyikan — tampilkan hanya setelah ada testimoni asli klien (dengan izin).
 
