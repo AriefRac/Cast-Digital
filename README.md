@@ -27,23 +27,7 @@ ref/                  (lokal saja, di .gitignore) Screenshot referensi desain
 
 ## Gaya visual
 
-Latar belang: setiap section bergantian biru brand (#2230F2) dan putih, dimulai dari hero biru (dengan glow cyan) dan ditutup footer biru. Pita miring "For UMKM" menempel di sambungan hero biru dan section klien putih. Headline kapital condensed, label mono kapital, dan satu warna aksen untuk tombol utama, label, dan angka: cyan di bidang biru, biru di bidang putih.
-
-### Tone section (latar belang)
-
-Warna latar diatur lewat kelas di setiap `<section>` (dan `<footer>`):
-
-| Kelas | Latar | Teks | Aksen & tombol utama |
-|---|---|---|---|
-| `tone-blue` | biru #2230F2 | putih | cyan, teks tombol gelap |
-| `tone-light` | putih | gelap (`--ink`) | biru, teks tombol putih |
-| `tone-dark` | navy #05061A | putih | cyan (dipakai untuk kartu gelap di panel "Starting from any price") |
-
-Kelas tone juga mengganti token `--fg`, `--text-2`, `--accent`, `--accent-ink`, `--btn-hover`, `--line`, `--glass`, dan `--logo-filter`, jadi komponen di dalamnya (tombol, garis, kartu, logo klien) otomatis menyesuaikan. Kelas tone boleh dipakai di dalam section lain; contohnya kartu chat di section "Kenal sama situasi ini?" memakai `tone-light` di atas section biru.
-
-Urutan saat ini: hero biru → klien putih → masalah biru → layanan putih → hasil karya biru → kenapa CAST putih → proses biru → tim putih → FAQ biru → konsultasi putih → footer biru. Section `#studi-kasus` (`tone-light`) dan `#testimoni` (`tone-blue`) masih tersembunyi; saat ditampilkan, tone section sesudahnya perlu ditukar supaya belangnya tetap berselang-seling.
-
-Header selalu di atas biru: transparan di atas hero, lalu menjadi bar biru solid setelah halaman di-scroll, jadi logo putih tetap terbaca di atas section putih.
+Latar gelap dengan glow gradien yang diam saat scroll (`body::before`, `position: fixed`), headline kapital condensed, label mono kapital, dan satu warna aksen terang untuk tombol utama, label, dan angka.
 
 ### Font
 
@@ -63,19 +47,17 @@ Semua font di-host sendiri di `assets/fonts/` karena CSP hanya mengizinkan font 
 
 ### Mengganti palet
 
-Warna brand diatur lewat token di `:root` bagian atas `assets/css/main.css`:
+Semua warna diatur lewat token di `:root` bagian atas `assets/css/main.css`:
 
-- `--blue` (#2230F2): latar section `tone-blue`, aksen di bidang putih, bubble chat CAST, pilihan di form, awal gradien panel "Starting from any price".
-- `--cyan` (#25F8FF): aksen di bidang biru (tombol utama, label, angka), pita "For UMKM", akhir gradien panel. Jangan dipakai sebagai teks di atas putih karena kontrasnya terlalu rendah.
-- `--navy` (#05061A): "hitam" brand untuk teks gelap di atas cyan, kartu gelap, menu HP, dan badge WhatsApp.
+- `--bg` warna dasar halaman, `--accent` warna aksen, `--accent-ink` warna teks di atas aksen.
+- `--glow-1` dan `--glow-2` warna glow latar. Keduanya juga dipakai untuk panel gradien "Starting from any price".
+- `--blue` (#2230F2) khusus untuk bidang/latar (bubble chat CAST, pilihan di form). Jangan dipakai sebagai warna teks di atas latar gelap karena kontrasnya terlalu rendah.
 
-Token per tone (`--fg`, `--accent`, dst.) ada tepat di bawah `:root`; lihat bagian Tone section di atas.
-
-Palet alternatif (ungu #7A2CFF + lime #D4FF3A) sudah ditulis sebagai komentar di `:root`; tinggal tukar dua barisnya. Setelah mengganti palet, cek ulang kontras teks (minimal WCAG AA): teks putih dan aksen di atas `--blue`, `--blue` di atas putih, serta panel gradien (teks putih di bagian atas panel, teks gelap di bagian bawah).
+Default memakai warna brand CAST (biru #2230F2 + cyan #25F8FF). Palet alternatif (aksen lime #D4FF3A, glow ungu #7A2CFF dan magenta #FF00AA) sudah ditulis sebagai komentar di `:root`; tinggal tukar empat barisnya. Setelah mengganti palet, cek ulang kontras teks (minimal WCAG AA), terutama di panel gradien: teks putih ada di bagian atas panel, teks gelap di bagian bawah.
 
 ### Logo klien
 
-Logo di strip klien diwarnai satu warna lewat CSS (token `--logo-filter`: hitam di bidang putih, putih di bidang biru), jadi file logo harus berlatar transparan. Logo berlatar solid akan tampil sebagai kotak polos. Lima logo yang awalnya berlatar solid sudah dibuatkan versi transparan (`*-v2.webp`).
+Logo di strip klien diputihkan lewat CSS (`filter: brightness(0) invert(1)`), jadi file logo harus berlatar transparan. Logo berlatar solid akan tampil sebagai kotak putih. Lima logo yang awalnya berlatar solid sudah dibuatkan versi transparan (`*-v2.webp`).
 
 ## Menjalankan lokal
 
@@ -91,8 +73,8 @@ Buka http://localhost:8000. Alamat `castdigital.example` di `<head>`, `robots.tx
 - **Tambah logo klien:** WebP berlatar transparan setinggi ±112 px di `assets/img/clients/` (lihat bagian Logo klien di atas), lalu tambahkan `<li>` di kedua `<ul class="logo-track">` (yang kedua duplikat untuk animasi). Klien tanpa logo memakai `<li class="wordmark">Nama</li>`.
 - **Tambah hasil karya:** salin satu `<button class="work-card">` di section `#karya`. `data-media` = video lengkap di `assets/video/` (≤ 5 MB), `data-src` = klip preview di `assets/video/previews/`, `poster` = WebP di `assets/img/posters/`.
 - **Mengganti gambar/video:** pakai nama file baru. Gambar & video di-cache browser 7 hari, jadi file dengan nama sama bisa tetap tampil versi lama.
-- **Testimoni:** section `#testimoni` disembunyikan (atribut `hidden`) karena isinya masih dummy. Setelah ada testimoni asli (dan izin) dari klien, edit `<figure class="testi">`, hapus atribut `hidden`, lalu tambahkan lagi link "Testimoni" di navigasi footer. Sesuaikan juga tone section-nya (lihat Tone section).
-- **Studi kasus:** section `#studi-kasus` (setelah Hasil Karya) berisi 3 kartu: iSell, Abinaya Desain, dan FKP Kota Serang. Section ini sengaja disembunyikan (atribut `hidden`) sampai ada data hasil asli dari klien. Setiap metrik masih berupa placeholder `[angka]`; jangan diisi angka perkiraan. Cara menampilkan: isi angka asli yang sudah disetujui klien, cek ulang kalimat tantangan bersama klien, lalu hapus atribut `hidden` dan sesuaikan tone section-nya (lihat Tone section).
+- **Testimoni:** section `#testimoni` disembunyikan (atribut `hidden`) karena isinya masih dummy. Setelah ada testimoni asli (dan izin) dari klien, edit `<figure class="testi">`, hapus atribut `hidden`, lalu tambahkan lagi link "Testimoni" di navigasi footer.
+- **Studi kasus:** section `#studi-kasus` (setelah Hasil Karya) berisi 3 kartu: iSell, Abinaya Desain, dan FKP Kota Serang. Section ini sengaja disembunyikan (atribut `hidden`) sampai ada data hasil asli dari klien. Setiap metrik masih berupa placeholder `[angka]`; jangan diisi angka perkiraan. Cara menampilkan: isi angka asli yang sudah disetujui klien, cek ulang kalimat tantangan bersama klien, lalu hapus atribut `hidden`.
 
 ## Tracking & CSP
 

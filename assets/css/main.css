@@ -1,6 +1,6 @@
 /* =========================================================
    Stylesheet utama CAST Digital
-   Gaya: latar belang biru & putih, headline kapital condensed
+   Gaya: latar gelap, glow gradien, headline kapital condensed
    Font: Archivo (headline), DM Mono (label), DM Sans (body)
    ========================================================= */
 
@@ -30,20 +30,28 @@
 
 :root {
   /* Palet default: warna brand CAST */
-  --blue: #2230F2;
-  --cyan: #25F8FF;
+  --bg: #05061A;
+  --accent: #25F8FF;
+  --accent-ink: #04121A;
+  --glow-1: #2230F2;
+  --glow-2: #25F8FF;
 
-  /* Palet alternatif: ungu & lime. Ganti dua baris di atas dengan:
-  --blue: #7A2CFF;
-  --cyan: #D4FF3A;
+  /* Palet alternatif: aksen lime, glow ungu & magenta. Ganti empat baris di atas dengan:
+  --accent: #D4FF3A;
+  --accent-ink: #11140A;
+  --glow-1: #7A2CFF;
+  --glow-2: #FF00AA;
   */
 
-  --navy: #05061A; /* "hitam" brand: teks gelap, kartu gelap, menu HP */
+  --blue: #2230F2; /* hanya untuk bidang/latar; terlalu gelap untuk teks di atas latar gelap */
   --surface: #0C0E2B;
+  --text-2: #BFC2DA;
+  --line: rgba(255, 255, 255, .12);
+  --glass: rgba(255, 255, 255, .045);
   --wa: #25D366;
   --wa-ink: #06361A;
 
-  /* Teks di bidang putih & di dalam kartu putih (form) */
+  /* Warna di dalam kartu putih (form) */
   --ink: #0C0D1A;
   --muted: #5B5E73;
 
@@ -59,41 +67,13 @@
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
 
-/* ---------- Tone bidang (latar belang) ----------
-   Setiap section diberi .tone-blue atau .tone-light secara berselang-seling.
-   Token di bawah ikut berganti, jadi teks, aksen, tombol, garis & kartu menyesuaikan sendiri.
-   .tone-dark dipakai untuk kartu gelap di dalam bidang terang. */
-:root, .tone-blue, .tone-dark {
-  --fg: #fff;
-  --text-2: #D6DBFF;
-  --accent: var(--cyan);
-  --accent-ink: var(--navy);
-  --btn-hover: #fff;
-  --line: rgba(255, 255, 255, .22);
-  --glass: rgba(255, 255, 255, .08);
-  --logo-filter: brightness(0) invert(1);
-}
-.tone-light {
-  --fg: var(--ink);
-  --text-2: var(--muted);
-  --accent: var(--blue);
-  --accent-ink: #fff;
-  --btn-hover: var(--navy);
-  --line: rgba(12, 13, 26, .12);
-  --glass: #F3F4FC;
-  --logo-filter: brightness(0);
-}
-.tone-blue, .tone-dark, .tone-light { color: var(--fg); }
-.tone-blue { background-color: var(--blue); color-scheme: dark; }
-.tone-dark { background-color: var(--navy); color-scheme: dark; }
-.tone-light { background-color: #fff; color-scheme: light; }
-
 *, *::before, *::after { box-sizing: border-box; }
+/* Warna dasar di html, bukan body, supaya lapisan glow (body::before, z-index -1) tidak tertutup */
 html {
-  background-color: var(--blue);
+  background-color: var(--bg);
   color-scheme: dark;
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-h); /* pas di sambungan warna, tanpa sisa bidang sebelumnya di bawah header */
+  scroll-padding-top: calc(var(--header-h) + 16px);
   -webkit-text-size-adjust: 100%;
 }
 body {
@@ -101,9 +81,26 @@ body {
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.6;
-  color: var(--fg);
+  color: #fff;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+/* Glow gradien besar yang diam saat halaman di-scroll */
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 46% at 96% 0%, color-mix(in srgb, var(--glow-1) 70%, transparent), transparent 72%),
+    radial-gradient(34% 26% at 62% -4%, color-mix(in srgb, var(--glow-2) 20%, transparent), transparent 70%),
+    radial-gradient(62% 50% at -6% 100%, color-mix(in srgb, var(--glow-1) 52%, transparent), transparent 72%),
+    radial-gradient(40% 30% at 30% 108%, color-mix(in srgb, var(--glow-2) 22%, transparent), transparent 70%);
 }
 img, video { display: block; max-width: 100%; }
 .sprite { position: absolute; }
@@ -172,14 +169,14 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   background: var(--accent); color: var(--accent-ink);
   box-shadow: 0 14px 34px -16px color-mix(in srgb, var(--accent) 85%, transparent);
 }
-.btn-primary:hover { background: var(--btn-hover); }
+.btn-primary:hover { background: #fff; }
 .btn-wa { background: var(--wa); color: var(--wa-ink); }
 .btn-wa:hover { background: #1fbd5a; }
 
-.link-circle { display: inline-flex; align-items: center; gap: 14px; font-size: 12px; color: var(--fg); }
+.link-circle { display: inline-flex; align-items: center; gap: 14px; font-size: 12px; color: #fff; }
 .link-circle-icon {
   width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
-  border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  border: 1px solid rgba(255, 255, 255, .35);
   transition: background-color .25s, border-color .25s, color .25s, transform .25s var(--ease);
 }
 .link-circle:hover .link-circle-icon { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); transform: rotate(90deg); }
@@ -196,17 +193,16 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .ticks .icon { color: var(--accent); margin-top: .3em; width: 1em; height: 1em; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tags li { font-size: 11px; letter-spacing: .12em; line-height: 1.2; padding: 9px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, currentColor 24%, transparent); }
+.tags li { font-size: 11px; letter-spacing: .12em; line-height: 1.2; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .24); }
 
 /* ---------- Header ---------- */
-/* Header selalu di atas biru: transparan di atas hero, jadi bar biru setelah scroll (supaya terbaca di bidang putih) */
 .site-header { position: sticky; top: 0; z-index: 100; padding-top: env(safe-area-inset-top, 0px); }
 .site-header::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: var(--blue); box-shadow: 0 12px 32px -18px rgba(5, 6, 26, .55);
+  content: ""; position: absolute; inset: 0 0 -32px; pointer-events: none;
+  background: linear-gradient(180deg, var(--bg) 30%, transparent);
   opacity: 0; transition: opacity .3s;
 }
-.site-header.is-scrolled::before { opacity: 1; }
+.site-header.is-scrolled::before { opacity: .9; }
 .header-inner { position: relative; height: var(--header-h); display: flex; align-items: center; gap: 20px; }
 .brand { flex: none; }
 .brand img { height: 40px; width: auto; }
@@ -223,16 +219,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .burger { display: none; }
 
 /* ---------- Hero ---------- */
-/* Hero ditarik ke atas di bawah header transparan, supaya glow-nya ikut mengisi area header */
-.hero {
-  --header-total: calc(var(--header-h) + env(safe-area-inset-top, 0px));
-  margin-top: calc(-1 * var(--header-total));
-  padding-block: calc(var(--header-total) + clamp(24px, 4vw, 56px)) clamp(56px, 8vw, 104px);
-  overflow-x: clip;
-  background-image:
-    radial-gradient(52% 58% at 100% 0%, color-mix(in srgb, var(--cyan) 34%, transparent), transparent 72%),
-    radial-gradient(48% 60% at 0% 38%, color-mix(in srgb, var(--navy) 34%, transparent), transparent 72%);
-}
+.hero { padding-block: clamp(24px, 4vw, 56px) clamp(56px, 8vw, 104px); overflow-x: clip; }
 .hero-grid { display: grid; gap: clamp(40px, 6vw, 56px); align-items: center; }
 .eyebrow {
   display: inline-flex; padding: 9px 16px; border-radius: 999px;
@@ -242,10 +229,10 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .hero h1 { font-size: clamp(54px, 8.4vw, 128px); line-height: .86; letter-spacing: -.005em; max-width: 5.8em; margin-bottom: 28px; }
 .h1-accent { color: var(--accent); }
 @supports (-webkit-text-stroke: 1px) {
-  .h1-outline { color: transparent; -webkit-text-stroke: max(1.5px, .016em) var(--fg); }
+  .h1-outline { color: transparent; -webkit-text-stroke: max(1.5px, .016em) #fff; }
 }
 .lead { font-size: clamp(17px, 1.5vw, 19px); color: var(--text-2); max-width: 540px; margin-bottom: 36px; }
-.lead strong { color: var(--fg); }
+.lead strong { color: #fff; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
 
 /* Tumpukan 3 HP. Semua ukuran relatif ke lebar .hero-visual (unit cqw) */
@@ -275,7 +262,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .phone-sound {
   position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%);
   border: 0; border-radius: 999px; padding: 9px 14px; cursor: pointer;
-  background: #fff; color: var(--navy); font-size: 10.5px; letter-spacing: .1em; line-height: 1.2; white-space: nowrap;
+  background: #fff; color: var(--bg); font-size: 10.5px; letter-spacing: .1em; line-height: 1.2; white-space: nowrap;
   box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
 }
 .hero-sticker {
@@ -304,16 +291,12 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .hero-proof span { font-size: clamp(10px, 2.3cqw, 12px); letter-spacing: .08em; line-height: 1.25; max-width: 7.5em; }
 
 /* ---------- Audience band ---------- */
-/* Pita dimiringkan; lebar 110% dipotong oleh overflow pembungkus, jadi tidak memicu scroll horizontal.
-   Latarnya separuh biru separuh putih, jadi pita menempel di sambungan hero dan section klien. */
-.audience-band {
-  overflow: hidden; padding-block: calc(2vw + 12px);
-  background: linear-gradient(180deg, var(--blue) 50%, #fff 50%);
-}
+/* Pita dimiringkan; lebar 110% dipotong oleh overflow pembungkus, jadi tidak memicu scroll horizontal */
+.audience-band { overflow: hidden; padding-block: calc(2vw + 12px); }
 .band-strip {
   width: 110%; margin-left: -5%; padding-block: 14px 12px;
-  background: var(--cyan); color: var(--navy); transform: rotate(-2deg);
-  box-shadow: 0 20px 40px -24px rgba(5, 6, 26, .55);
+  background: var(--accent); color: var(--accent-ink); transform: rotate(-2deg);
+  box-shadow: 0 20px 50px -24px color-mix(in srgb, var(--accent) 70%, transparent);
 }
 .band-track { display: flex; width: max-content; align-items: center; font-size: clamp(28px, 3.6vw, 48px); animation: marquee 32s linear infinite; }
 .band-track > * { margin-right: .45em; white-space: nowrap; }
@@ -332,17 +315,16 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .logo-marquee:hover .logo-track { animation-play-state: paused; }
 @keyframes marquee-full { to { transform: translateX(-100%); } }
 .logo-track li { flex: none; display: grid; place-items: center; height: 64px; }
-.logo-track img { width: auto; max-height: 52px; filter: var(--logo-filter); opacity: .6; transition: opacity .3s; }
+.logo-track img { width: auto; max-height: 52px; filter: brightness(0) invert(1); opacity: .6; transition: opacity .3s; }
 .logo-track img:hover { opacity: 1; }
-.wordmark { font-size: 30px; font-weight: 700; color: color-mix(in srgb, var(--fg) 60%, transparent); white-space: nowrap; }
+.wordmark { font-size: 30px; font-weight: 700; color: rgba(255, 255, 255, .6); white-space: nowrap; }
 
 /* ---------- Pain (format chat WhatsApp) ---------- */
 .pain-grid { display: grid; gap: 8px; }
 .pain-chat { display: grid; gap: 20px; justify-items: end; }
-/* Kartu chat memakai .tone-light (latar putih) di dalam section biru */
 .chat {
   width: 100%; padding: clamp(16px, 3vw, 24px); border-radius: 28px;
-  border: 1px solid var(--line); box-shadow: 0 40px 80px -40px rgba(5, 6, 26, .6);
+  background: rgba(255, 255, 255, .035); border: 1px solid var(--line);
 }
 .chat-head { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
 .chat-avatar { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--wa); color: var(--wa-ink); }
@@ -351,14 +333,14 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .chat-status { font-size: 10.5px; color: var(--accent); }
 .chat-list { display: flex; flex-direction: column; gap: 10px; }
 .bubble { max-width: min(86%, 440px); padding: 12px 16px; border-radius: 20px; font-size: 16px; line-height: 1.45; }
-.bubble-in { align-self: flex-start; background: var(--glass); border: 1px solid var(--line); border-top-left-radius: 6px; }
+.bubble-in { align-self: flex-start; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .1); border-top-left-radius: 6px; }
 .bubble-out {
   align-self: flex-end; margin-top: 10px; display: grid; gap: 6px;
   background: var(--blue); color: #fff; border-top-right-radius: 6px;
   box-shadow: 0 18px 40px -20px color-mix(in srgb, var(--blue) 90%, transparent);
 }
 .bubble-from { font-size: 10.5px; color: rgba(255, 255, 255, .8); }
-.bubble-read { justify-self: end; width: 18px; height: 18px; margin-top: -4px; color: var(--cyan); }
+.bubble-read { justify-self: end; width: 18px; height: 18px; margin-top: -4px; color: var(--accent); }
 
 /* ---------- Services ---------- */
 .service-list { display: grid; gap: 20px; }
@@ -367,7 +349,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   background: var(--glass); border: 1px solid var(--line);
   transition: border-color .3s;
 }
-.service:hover { border-color: color-mix(in srgb, var(--fg) 26%, transparent); }
+.service:hover { border-color: rgba(255, 255, 255, .26); }
 .service-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); }
 .service-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .6s var(--ease); }
 .service:hover .service-media img { transform: scale(1.04); }
@@ -383,7 +365,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   --rail-pad: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
   overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--rail-pad);
   padding: 4px var(--rail-pad) 24px;
-  scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--fg) 30%, transparent) transparent;
+  scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .25) transparent;
 }
 .work-card {
   position: relative; aspect-ratio: 9 / 16; border-radius: var(--radius); overflow: hidden;
@@ -441,18 +423,16 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   position: relative; overflow: hidden; display: grid; gap: 32px;
   padding: clamp(32px, 5vw, 72px) clamp(16px, 5vw, 72px);
   border-radius: clamp(24px, 3vw, 40px);
-  background: linear-gradient(180deg, var(--blue) 0, var(--cyan) var(--panel-fade));
-  color: #fff;
+  background: linear-gradient(180deg, var(--glow-1) 0, var(--glow-2) var(--panel-fade));
 }
 .promise-copy .kicker { color: #fff; }
 .promise h2 { font-size: clamp(48px, 6.4vw, 92px); margin-bottom: 28px; }
-.promise-ink { display: block; color: var(--navy); }
-.promise-lead { font-size: clamp(17px, 1.5vw, 20px); font-weight: 500; color: var(--navy); max-width: 520px; margin-bottom: 20px; }
-.promise-serve { font-size: 15px; color: var(--navy); }
-/* Kartu gelap: memakai .tone-dark */
+.promise-ink { display: block; color: var(--bg); }
+.promise-lead { font-size: clamp(17px, 1.5vw, 20px); font-weight: 500; color: var(--bg); max-width: 520px; margin-bottom: 20px; }
+.promise-serve { font-size: 15px; color: var(--bg); }
 .promise-card {
-  border-radius: 28px; padding: clamp(20px, 3.4vw, 40px);
-  border: 1px solid rgba(255, 255, 255, .08); box-shadow: 0 40px 80px -40px rgba(5, 6, 26, .7);
+  background: var(--bg); color: #fff; border-radius: 28px; padding: clamp(20px, 3.4vw, 40px);
+  border: 1px solid rgba(255, 255, 255, .08); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .7);
 }
 .promise-card h3 { font-size: clamp(30px, 2.6vw, 38px); margin-bottom: 24px; }
 .promise-card .ticks { margin-bottom: 28px; }
@@ -503,7 +483,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   padding: 0 22px; border-radius: 18px; background: var(--glass); border: 1px solid var(--line);
   transition: border-color .2s, background-color .2s;
 }
-.faq-list details[open] { border-color: color-mix(in srgb, var(--accent) 55%, transparent); background: color-mix(in srgb, var(--fg) 12%, transparent); }
+.faq-list details[open] { border-color: color-mix(in srgb, var(--accent) 55%, transparent); background: rgba(255, 255, 255, .06); }
 .faq-list summary {
   list-style: none; cursor: pointer; padding: 20px 0; font-weight: 700; font-size: 17px; line-height: 1.4;
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
@@ -511,11 +491,11 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .faq-list summary::-webkit-details-marker { display: none; }
 .faq-list summary::after {
   content: "+"; flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
-  background: color-mix(in srgb, var(--fg) 10%, transparent); color: var(--accent); font-size: 22px; font-weight: 500; transition: transform .25s var(--ease);
+  background: rgba(255, 255, 255, .08); color: var(--accent); font-size: 22px; font-weight: 500; transition: transform .25s var(--ease);
 }
 .faq-list details[open] summary::after { transform: rotate(45deg); background: var(--accent); color: var(--accent-ink); }
 .faq-list details p { padding-bottom: 22px; color: var(--text-2); }
-.faq-list details p strong { color: var(--fg); }
+.faq-list details p strong { color: #fff; }
 
 /* ---------- Final CTA ---------- */
 .final-grid { display: grid; gap: 48px; align-items: center; }
@@ -524,14 +504,13 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .final-contact { display: flex; flex-wrap: wrap; gap: 10px; }
 .final-contact li {
   display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px;
-  background: var(--glass); border: 1px solid var(--line); font-size: 14px;
+  background: var(--glass); border: 1px solid rgba(255, 255, 255, .2); font-size: 14px;
 }
 
-/* Form tetap kartu putih; garis & bayangan biru supaya tetap terpisah dari bidang putih */
+/* Form tetap kartu putih */
 .lead-form {
   color-scheme: light; background: #fff; color: var(--ink); border-radius: 28px; padding: clamp(24px, 4vw, 36px);
-  display: grid; gap: 18px; border: 1px solid var(--line);
-  box-shadow: 0 40px 80px -40px color-mix(in srgb, var(--blue) 55%, transparent);
+  display: grid; gap: 18px; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .5);
 }
 .lead-form :focus-visible { outline-color: var(--blue); }
 .field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
@@ -557,7 +536,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .form-hint { text-align: center; font-size: 13px; color: var(--muted); }
 
 /* ---------- Footer ---------- */
-.site-footer { color: var(--text-2); padding-top: clamp(56px, 8vw, 96px); font-size: 15px; }
+.site-footer { border-top: 1px solid var(--line); color: var(--text-2); padding-top: clamp(56px, 8vw, 96px); font-size: 15px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 40px; }
 .footer-brand img { height: 44px; width: auto; margin-bottom: 18px; }
 .footer-col { display: grid; gap: 10px; align-content: start; }
@@ -570,7 +549,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .wa-float {
   position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 90;
   width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center;
-  background: color-mix(in srgb, var(--navy) 85%, transparent); border: 1px solid rgba(255, 255, 255, .16);
+  background: color-mix(in srgb, var(--bg) 82%, transparent); border: 1px solid rgba(255, 255, 255, .16);
   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   box-shadow: 0 18px 40px -16px rgba(0, 0, 0, .85);
   opacity: 0; visibility: hidden; transform: translateY(24px) scale(.85);
@@ -653,7 +632,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
     position: fixed; top: calc(var(--header-h) + env(safe-area-inset-top, 0px)); left: 12px; right: 12px; margin: 0;
     flex-direction: column; align-items: stretch; gap: 0;
     padding: 8px 20px 20px; border-radius: 28px;
-    background: color-mix(in srgb, var(--navy) 97%, transparent); border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 96%, transparent); border: 1px solid var(--line);
     box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .8);
     max-height: calc(100dvh - var(--header-h) - env(safe-area-inset-top, 0px) - 12px); overflow-y: auto; overscroll-behavior: contain;
     transform: translateY(-12px); opacity: 0; visibility: hidden; transition: all .25s var(--ease);
