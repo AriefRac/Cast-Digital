@@ -242,9 +242,6 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 }
 .hero h1 { font-size: clamp(54px, 8.4vw, 128px); line-height: .86; letter-spacing: -.005em; max-width: 5.8em; margin-bottom: 28px; }
 .h1-accent { color: var(--accent); }
-@supports (-webkit-text-stroke: 1px) {
-  .h1-outline { color: transparent; -webkit-text-stroke: max(1.5px, .016em) var(--fg); }
-}
 .lead { font-size: clamp(17px, 1.5vw, 19px); color: var(--text-2); max-width: 540px; margin-bottom: 36px; }
 .lead strong { color: var(--fg); }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
