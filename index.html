@@ -56,6 +56,10 @@
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-read" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2 12.5l4 4L15.5 7M10.5 15.5l1 1L21 7"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></symbol>
+  <symbol id="i-content" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3l1.5-2h7l1.5 2h3A1.5 1.5 0 0 1 21.5 10v8a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 18v-8A1.5 1.5 0 0 1 4 8.5Z"/><circle cx="12" cy="13.5" r="3.5"/></g></symbol>
+  <symbol id="i-audience" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="7.5" r="3"/><path d="M2.5 19v-1a6 6 0 0 1 6-6h1a6 6 0 0 1 4.1 1.6"/><rect x="15.5" y="4" width="4" height="9" rx="2"/><path d="M13.5 10v1a4 4 0 0 0 8 0v-1M17.5 15v4m-2 0h4"/></g></symbol>
+  <symbol id="i-strategy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="15" height="17" rx="2"/><path d="M9 4.5V3h7v1.5M8.5 9.5l1.3 1.3 2.2-2.3M14 10h3M8.5 15.5l1.3 1.3 2.2-2.3M14 16h3"/></g></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m3 17 6-6 4 4 8-8M15 7h6v6"/></symbol>
 </svg>
 
 <a class="skip-link" href="#main">Langsung ke konten</a>
@@ -64,13 +68,14 @@
 <header class="site-header" id="top">
   <div class="container header-inner">
     <a href="#top" class="brand" aria-label="CAST Digital, kembali ke atas">
-      <img src="assets/img/brand/logo-white.svg" alt="CAST Digital" width="148" height="48">
+      <img class="brand-blue" src="assets/img/brand/logo-blue.svg" alt="CAST Digital" width="148" height="48">
+      <img class="brand-white" src="assets/img/brand/logo-white.svg" alt="" width="148" height="48">
     </a>
     <nav class="main-nav" id="mainNav" aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
       <a href="#layanan">Layanan</a>
       <a href="#karya">Hasil Karya</a>
       <a href="#proses">Proses</a>
-      <a href="#tim">Tim</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-primary nav-cta" href="https://wa.me/6289510337201" data-wa="nav" target="_blank" rel="noopener">
         <svg class="icon"><use href="#i-wa"/></svg> Konsultasi Gratis
@@ -83,7 +88,7 @@
 <main id="main">
 
 <!-- ===== HERO ===== -->
-<section class="hero tone-blue">
+<section class="hero tone-light">
   <div class="container hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">Creative Agency · Kota Serang, Banten</p>
@@ -121,19 +126,20 @@
       </ul>
     </div>
   </div>
-</section>
 
-<div class="audience-band" aria-label="Untuk UMKM, small business, dan brand owner">
-  <div class="band-strip">
-    <div class="band-track">
-      <span>For UMKM</span><i>•</i><span>Small Business</span><i>•</i><span>Brand Owner</span><i>•</i><span>Starting From Any Price</span><i>•</i><span>Terima Beres!</span><i>•</i>
-      <span aria-hidden="true">For UMKM</span><i>•</i><span aria-hidden="true">Small Business</span><i>•</i><span aria-hidden="true">Brand Owner</span><i>•</i><span aria-hidden="true">Starting From Any Price</span><i>•</i><span aria-hidden="true">Terima Beres!</span><i>•</i>
+  <!-- Pita di dalam hero: separuh atasnya transparan (gradien hero terlihat), separuh bawah biru menyambung ke section klien -->
+  <div class="audience-band" aria-label="Untuk UMKM, small business, dan brand owner">
+    <div class="band-strip">
+      <div class="band-track">
+        <span>For UMKM</span><i>•</i><span>Small Business</span><i>•</i><span>Brand Owner</span><i>•</i><span>Starting From Any Price</span><i>•</i><span>Terima Beres!</span><i>•</i>
+        <span aria-hidden="true">For UMKM</span><i>•</i><span aria-hidden="true">Small Business</span><i>•</i><span aria-hidden="true">Brand Owner</span><i>•</i><span aria-hidden="true">Starting From Any Price</span><i>•</i><span aria-hidden="true">Terima Beres!</span><i>•</i>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ===== KLIEN ===== -->
-<section class="clients tone-light" aria-labelledby="clients-title">
+<section class="clients tone-blue" aria-labelledby="clients-title">
   <div class="container">
     <h2 class="clients-title" id="clients-title">Dipercaya brand lokal dari berbagai bidang</h2>
   </div>
@@ -163,6 +169,42 @@
       <li><img src="assets/img/clients/magersari-reborn-v2.webp" width="57" alt="" height="56"></li>
       <li><img src="assets/img/clients/raja-holiday.webp" width="74" alt="" height="48"></li>
       <li><img src="assets/img/clients/ryu-kintaro-v2.webp" width="131" alt="" height="36"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== TENTANG ===== -->
+<section class="about tone-light" id="tentang">
+  <div class="container about-grid">
+    <div class="about-copy reveal">
+      <p class="kicker">Tentang Kami</p>
+      <h2>Content&nbsp;<i>·</i> Audience&nbsp;<i>·</i> Strategy&nbsp;<i>·</i> Trend</h2>
+      <p class="about-lead">CAST Digital adalah agency kreatif dari Kota Serang yang membantu brand, UMKM, dan instansi pemerintah berkembang melalui strategi digital, pengelolaan audiens, dan produksi konten.</p>
+      <p class="about-text">Dengan semangat <strong>#WithCAST — Starting From Any Price, Terima Beres!</strong>, kami membantu brand bertumbuh melalui strategi digital yang efektif dan relevan.</p>
+      <p class="about-founded">Founded 26.08.2025 · Kota Serang, Banten</p>
+      <a class="link-circle" href="#layanan">Kenali Lebih Lanjut <span class="link-circle-icon"><svg class="icon"><use href="#i-arrow"/></svg></span></a>
+    </div>
+    <ul class="pillars" aria-label="Empat pilar CAST">
+      <li class="pillar reveal">
+        <span class="pillar-top"><span class="pillar-icon"><svg class="icon"><use href="#i-content"/></svg></span><span class="pillar-num">01</span></span>
+        <h3>Content</h3>
+        <p>Scriptwriting, produksi video kreatif, dan visual storytelling untuk menarik perhatian dan mendorong engagement.</p>
+      </li>
+      <li class="pillar reveal d1">
+        <span class="pillar-top"><span class="pillar-icon"><svg class="icon"><use href="#i-audience"/></svg></span><span class="pillar-num">02</span></span>
+        <h3>Audience</h3>
+        <p>Memahami audiens dan membangun komunitas yang menghubungkan brand dengan orang yang tepat.</p>
+      </li>
+      <li class="pillar reveal d2">
+        <span class="pillar-top"><span class="pillar-icon"><svg class="icon"><use href="#i-strategy"/></svg></span><span class="pillar-num">03</span></span>
+        <h3>Strategy</h3>
+        <p>Perencanaan strategis dari positioning brand hingga kalender konten dan campaign.</p>
+      </li>
+      <li class="pillar reveal d3">
+        <span class="pillar-top"><span class="pillar-icon"><svg class="icon"><use href="#i-trend"/></svg></span><span class="pillar-num">04</span></span>
+        <h3>Trend</h3>
+        <p>Adaptasi tren dan budaya secara relevan agar brand tetap segar dan selangkah di depan.</p>
+      </li>
     </ul>
   </div>
 </section>
@@ -264,38 +306,57 @@
         <p class="kicker">Hasil Karya</p>
         <h2>Konten yang sudah tayang untuk klien kami.</h2>
       </div>
-      <p class="section-note">Ketuk kartu untuk menonton dengan suara.</p>
+      <p class="section-note">Pilih jenis konten, lalu ketuk kartu untuk melihat lebih dekat.</p>
+    </div>
+    <div class="work-tabs reveal" role="tablist" aria-label="Jenis hasil karya">
+      <button class="work-tab" type="button" role="tab" id="tab-reels" aria-controls="panel-reels" aria-selected="true">Reels <span class="work-tab-count">2</span></button>
+      <button class="work-tab" type="button" role="tab" id="tab-design" aria-controls="panel-design" aria-selected="false" tabindex="-1">Design <span class="work-tab-count">3</span></button>
+      <button class="work-tab" type="button" role="tab" id="tab-entertainment" aria-controls="panel-entertainment" aria-selected="false" tabindex="-1">Entertainment <span class="work-tab-count">1</span></button>
     </div>
   </div>
-  <div class="work-rail" tabindex="0" aria-label="Daftar hasil karya, geser untuk melihat lainnya">
-    <button class="work-card" type="button" data-media="assets/video/isell-reels.mp4" data-title="iSell · Reels">
-      <video data-src="assets/video/previews/isell-reels.mp4" poster="assets/img/posters/isell-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="work-meta"><span class="work-tag">Reels</span><strong>iSell</strong><span>iPhone Specialist Kota Serang</span></span>
-      <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/video/abinaya-reels.mp4" data-title="Abinaya Desain · Reels">
-      <video data-src="assets/video/previews/abinaya-reels.mp4" poster="assets/img/posters/abinaya-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="work-meta"><span class="work-tag">Reels</span><strong>Abinaya Desain</strong><span>Desain interior</span></span>
-      <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/video/isell-entertainment.mp4" data-title="iSell · Video Entertainment">
-      <video data-src="assets/video/previews/isell-entertainment.mp4" poster="assets/img/posters/isell-entertainment.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="work-meta"><span class="work-tag">Entertainment</span><strong>iSell</strong><span>Konten hiburan untuk engagement</span></span>
-      <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/img/work/isell-design.webp" data-title="iSell · Desain Promosi">
-      <img src="assets/img/work/isell-design.webp" alt="" loading="lazy" width="900" height="1200">
-      <span class="work-meta"><span class="work-tag">Design</span><strong>iSell</strong><span>Desain promo iPhone sale</span></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/video/enter-english-reels.mp4" data-title="Enter English · Konten Promosi">
-      <video data-src="assets/video/previews/enter-english-reels.mp4" poster="assets/img/posters/enter-english-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
-      <span class="work-meta"><span class="work-tag">Design</span><strong>Enter English</strong><span>Lembaga kursus bahasa Inggris</span></span>
-      <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
-    </button>
-    <button class="work-card" type="button" data-media="assets/img/services/event-coverage.webp" data-title="FKP Kota Serang · Event Piala Ibu Kota">
-      <img src="assets/img/services/event-coverage.webp" alt="" loading="lazy" width="675" height="900">
-      <span class="work-meta"><span class="work-tag">Event</span><strong>FKP Kota Serang</strong><span>Festival Kreatif · Piala Ibu Kota</span></span>
-    </button>
+
+  <!-- Satu panel per jenis karya. Kalau menambah kartu, perbarui juga angka .work-tab-count di tab-nya -->
+  <div class="work-panel" id="panel-reels" role="tabpanel" aria-labelledby="tab-reels">
+    <div class="work-rail" tabindex="0" aria-label="Daftar Reels, geser untuk melihat lainnya">
+      <button class="work-card" type="button" data-media="assets/video/isell-reels.mp4" data-title="iSell · Reels">
+        <video data-src="assets/video/previews/isell-reels.mp4" poster="assets/img/posters/isell-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="work-meta"><strong>iSell</strong><span>iPhone Specialist Kota Serang</span></span>
+        <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+      </button>
+      <button class="work-card" type="button" data-media="assets/video/abinaya-reels.mp4" data-title="Abinaya Desain · Reels">
+        <video data-src="assets/video/previews/abinaya-reels.mp4" poster="assets/img/posters/abinaya-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="work-meta"><strong>Abinaya Desain</strong><span>Desain interior</span></span>
+        <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="work-panel" id="panel-design" role="tabpanel" aria-labelledby="tab-design" hidden>
+    <div class="work-rail" tabindex="0" aria-label="Daftar desain, geser untuk melihat lainnya">
+      <button class="work-card" type="button" data-media="assets/img/work/isell-design.webp" data-title="iSell · Desain Promosi">
+        <img src="assets/img/work/isell-design.webp" alt="" loading="lazy" width="900" height="1200">
+        <span class="work-meta"><strong>iSell</strong><span>Desain promo iPhone sale</span></span>
+      </button>
+      <button class="work-card" type="button" data-media="assets/video/enter-english-reels.mp4" data-title="Enter English · Desain Social Media">
+        <video data-src="assets/video/previews/enter-english-reels.mp4" poster="assets/img/posters/enter-english-reels.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="work-meta"><strong>Enter English</strong><span>Feed &amp; thumbnail Reels kursus bahasa Inggris</span></span>
+        <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+      </button>
+      <button class="work-card" type="button" data-media="assets/img/services/event-coverage.webp" data-title="FKP Kota Serang · Poster Piala Ibu Kota">
+        <img src="assets/img/services/event-coverage.webp" alt="" loading="lazy" width="675" height="900">
+        <span class="work-meta"><strong>FKP Kota Serang</strong><span>Poster event Piala Ibu Kota</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="work-panel" id="panel-entertainment" role="tabpanel" aria-labelledby="tab-entertainment" hidden>
+    <div class="work-rail" tabindex="0" aria-label="Daftar video entertainment, geser untuk melihat lainnya">
+      <button class="work-card" type="button" data-media="assets/video/isell-entertainment.mp4" data-title="iSell · Video Entertainment">
+        <video data-src="assets/video/previews/isell-entertainment.mp4" poster="assets/img/posters/isell-entertainment.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="work-meta"><strong>iSell</strong><span>Konten hiburan untuk engagement</span></span>
+        <span class="work-play" aria-hidden="true"><svg class="icon"><use href="#i-play"/></svg></span>
+      </button>
+    </div>
   </div>
   <div class="container work-foot reveal">
     <p>Mau konten seperti ini untuk brand kamu?</p>
@@ -418,42 +479,6 @@
   </div>
 </section>
 
-<!-- ===== TIM ===== -->
-<section class="team tone-light" id="tim">
-  <div class="container">
-    <div class="section-head section-head-split reveal">
-      <div>
-        <p class="kicker">Tim Produksi &amp; Kreatif</p>
-        <h2>Orang-orang di balik konten kamu.</h2>
-      </div>
-      <p class="section-note">Tim muda dari Kota Serang yang paham tren, juga paham cara jualan.</p>
-    </div>
-  </div>
-  <div class="team-rail">
-    <figure class="member reveal"><img src="assets/img/team/joo.webp" alt="Joo, Creative Conceptor" loading="lazy" width="520" height="885"></figure>
-    <figure class="member reveal d1"><img src="assets/img/team/sarah.webp" alt="Sarah, Entertainment" loading="lazy" width="520" height="885"></figure>
-    <figure class="member reveal d2"><img src="assets/img/team/nelly.webp" alt="Nelly, Entertainment" loading="lazy" width="520" height="885"></figure>
-    <figure class="member reveal d3"><img src="assets/img/team/pasya.webp" alt="Pasya, Lead Graphic Design" loading="lazy" width="520" height="885"></figure>
-    <figure class="member reveal d4"><img src="assets/img/team/ritaju.webp" alt="Ritaju, Video Editing" loading="lazy" width="520" height="885"></figure>
-  </div>
-  <div class="bts" aria-label="Dokumentasi kegiatan tim CAST">
-    <div class="bts-track">
-      <img src="assets/img/bts/bts-01.webp" width="330" height="440" alt="Tim CAST bersama Wakil Wali Kota Serang" loading="lazy">
-      <img src="assets/img/bts/bts-02.webp" width="330" height="440" alt="Tim CAST di studio" loading="lazy">
-      <img src="assets/img/bts/bts-03.webp" width="294" height="440" alt="Tim CAST berpose bersama" loading="lazy">
-      <img src="assets/img/bts/bts-04.webp" width="330" height="440" alt="Tim CAST saat produksi di luar ruangan" loading="lazy">
-      <img src="assets/img/bts/bts-05.webp" width="330" height="440" alt="Tim CAST di lokasi klien" loading="lazy">
-      <img src="assets/img/bts/bts-06.webp" width="248" height="440" alt="Tim CAST saat sesi brainstorming" loading="lazy">
-      <img src="assets/img/bts/bts-01.webp" width="330" height="440" alt="" aria-hidden="true" loading="lazy">
-      <img src="assets/img/bts/bts-02.webp" width="330" height="440" alt="" aria-hidden="true" loading="lazy">
-      <img src="assets/img/bts/bts-03.webp" width="294" height="440" alt="" aria-hidden="true" loading="lazy">
-      <img src="assets/img/bts/bts-04.webp" width="330" height="440" alt="" aria-hidden="true" loading="lazy">
-      <img src="assets/img/bts/bts-05.webp" width="330" height="440" alt="" aria-hidden="true" loading="lazy">
-      <img src="assets/img/bts/bts-06.webp" width="248" height="440" alt="" aria-hidden="true" loading="lazy">
-    </div>
-  </div>
-</section>
-
 <!-- ===== TESTIMONI =====
      DUMMY: disembunyikan (atribut hidden) sampai ada testimoni asli dari klien beserta izinnya.
      Setelah diganti, hapus atribut hidden dan tambahkan lagi link "Testimoni" di footer. -->
@@ -481,7 +506,7 @@
 </section>
 
 <!-- ===== FAQ ===== -->
-<section class="faq tone-blue" id="faq">
+<section class="faq tone-light" id="faq">
   <div class="container faq-grid">
     <div class="section-head reveal">
       <p class="kicker">FAQ</p>
@@ -523,7 +548,7 @@
 </section>
 
 <!-- ===== CTA AKHIR ===== -->
-<section class="final-cta tone-light" id="kontak">
+<section class="final-cta tone-dark" id="kontak">
   <div class="container final-grid">
     <div class="final-copy reveal">
       <p class="kicker">Konsultasi Gratis</p>
@@ -577,6 +602,7 @@
     </div>
     <nav class="footer-col" aria-label="Navigasi footer">
       <h3>Jelajahi</h3>
+      <a href="#tentang">Tentang Kami</a>
       <a href="#layanan">Layanan</a>
       <a href="#karya">Hasil Karya</a>
       <a href="#proses">Proses</a>
