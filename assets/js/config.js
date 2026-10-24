@@ -1,4 +1,4 @@
-// Pengaturan utama situs. Cukup ubah di sini, semua tombol WhatsApp ikut berubah.
+// Pengaturan utama situs. Ubah di sini saja — semua tombol WhatsApp ikut berubah.
 window.CAST_CONFIG = {
   whatsapp: '6289510337201',
 
