@@ -8,6 +8,7 @@ Catatan keputusan penting untuk landing page (`index.html`). Update setiap ada r
   - Section "Tentang" dari revisi lama **ditolak** (dinilai jelek). Jangan dipakai lagi tanpa persetujuan.
   - **Hero memakai gradien terang:** putih di kiri memudar ke biru → cyan di kanan/bawah (di HP memudar ke bawah), teks gelap. Pita audiens ada di ujung bawah hero.
   - Versi cream lama juga tidak dipakai.
+- **Warna dibatasi, jangan belang:** di section biru semua teks, label, angka & tombol **putih** (tombol putih, teks biru); di section putih teks gelap dengan aksen **biru**. Cyan **tidak** dipakai untuk teks — hanya untuk pita audiens dan gradien hero. Kartu dalam satu grup (misalnya langkah Proses) warnanya seragam, tidak ada satu kartu yang beda warna. Hijau WhatsApp hanya untuk tombol WA melayang dan ikon chat.
 - **Navbar:** transparan di atas hero (logo biru, teks gelap); setelah scroll jadi **satu bar glass biru full-width**. **Jangan** ada kapsul/pill glass terpisah di sekitar menu di atas bar (tampak "double").
 - **Background section selang-seling biru ↔ putih** (class `.tone-blue` / `.tone-light`). Dua section bersebelahan yang tampil tidak boleh sama warnanya. Urutan saat ini:
 

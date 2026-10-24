@@ -68,13 +68,16 @@
 /* ---------- Tone bidang (latar belang) ----------
    Setiap section diberi .tone-blue atau .tone-light secara berselang-seling.
    Token di bawah ikut berganti, jadi teks, aksen, tombol, garis & kartu menyesuaikan sendiri.
-   .tone-dark dipakai untuk kartu gelap di dalam bidang terang. */
+   .tone-dark dipakai untuk kartu gelap di dalam bidang terang.
+   Warna dibatasi: di bidang biru semua teks & aksen putih, di bidang putih teks gelap dengan aksen biru.
+   Cyan hanya dipakai di pita audiens dan latar hero, bukan untuk teks. */
 :root, .tone-blue, .tone-dark {
   --fg: #fff;
   --text-2: #D6DBFF;
-  --accent: var(--cyan);
-  --accent-ink: var(--navy);
-  --btn-hover: #fff;
+  --accent: #fff;
+  --accent-ink: var(--blue);
+  --btn-hover: #E4E7FF;
+  --btn-glow: rgba(5, 6, 26, .35);
   --line: rgba(255, 255, 255, .22);
   --glass: rgba(255, 255, 255, .08);
   --logo-filter: brightness(0) invert(1);
@@ -85,6 +88,7 @@
   --accent: var(--blue);
   --accent-ink: #fff;
   --btn-hover: var(--navy);
+  --btn-glow: color-mix(in srgb, var(--blue) 85%, transparent);
   --line: rgba(12, 13, 26, .12);
   --glass: #F3F4FC;
   --logo-filter: brightness(0);
@@ -175,11 +179,9 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .btn-block { width: 100%; }
 .btn-primary {
   background: var(--accent); color: var(--accent-ink);
-  box-shadow: 0 14px 34px -16px color-mix(in srgb, var(--accent) 85%, transparent);
+  box-shadow: 0 14px 34px -16px var(--btn-glow);
 }
 .btn-primary:hover { background: var(--btn-hover); }
-.btn-wa { background: var(--wa); color: var(--wa-ink); }
-.btn-wa:hover { background: #1fbd5a; }
 
 .link-circle { display: inline-flex; align-items: center; gap: 14px; font-size: 12px; color: var(--fg); }
 .link-circle-icon {
@@ -479,8 +481,6 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .step-num { font-size: clamp(38px, 3.4vw, 48px); letter-spacing: -.02em; line-height: 1; color: var(--accent); margin-bottom: 20px; }
 .step h3 { font-size: clamp(30px, 2.8vw, 38px); }
 .step p { color: var(--text-2); }
-.step:first-child { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.step:first-child .step-num, .step:first-child p { color: var(--accent-ink); }
 
 /* ---------- Testimonials (disembunyikan sampai ada testimoni asli) ---------- */
 .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 16px; }
