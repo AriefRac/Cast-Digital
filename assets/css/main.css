@@ -150,21 +150,14 @@ section { padding-block: clamp(72px, 10vw, 120px); }
 
 /* ---------- Header ---------- */
 .site-header {
-  --glass-bg: rgba(251, 249, 241, .82);
-  --glass-blur: saturate(1.4) blur(14px);
   position: sticky; top: 0; z-index: 100;
   padding-top: env(safe-area-inset-top, 0px);
-  transition: box-shadow .25s;
+  background: rgba(251, 249, 241, .82);
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  transition: box-shadow .25s, background-color .25s;
 }
-/* Glass ditaruh di pseudo-element supaya menu HP (child) bisa pakai blur yang sama */
-.site-header::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  transition: background-color .25s;
-}
-.site-header.is-scrolled { --glass-bg: rgba(251, 249, 241, .95); box-shadow: 0 1px 0 var(--line), 0 10px 30px -20px rgba(0, 0, 0, .25); }
+.site-header.is-scrolled { box-shadow: 0 1px 0 var(--line), 0 10px 30px -20px rgba(0, 0, 0, .25); background: rgba(251, 249, 241, .95); }
 .header-inner { height: var(--header-h); display: flex; align-items: center; gap: 24px; }
 .brand img { height: 44px; width: auto; }
 .main-nav { margin-left: auto; display: flex; align-items: center; gap: 30px; font-weight: 500; font-size: 15px; }
@@ -527,8 +520,7 @@ section { padding-block: clamp(72px, 10vw, 120px); }
   .main-nav {
     position: fixed; inset: calc(var(--header-h) + env(safe-area-inset-top, 0px)) 0 auto 0; margin: 0;
     flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--glass-bg); border-top: 1px solid var(--line); padding: 8px 24px 28px; font-size: 20px;
-    backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+    background: var(--cream); padding: 8px 24px 28px; font-size: 20px;
     box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .3);
     max-height: calc(100dvh - var(--header-h) - env(safe-area-inset-top, 0px)); overflow-y: auto; overscroll-behavior: contain;
     transform: translateY(-12px); opacity: 0; visibility: hidden; transition: all .25s var(--ease);
