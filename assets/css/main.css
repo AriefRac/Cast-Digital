@@ -448,24 +448,24 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .media-dialog-stage video, .media-dialog-stage img { width: 100%; max-height: calc(92vh - 70px); object-fit: contain; background: #000; }
 
 /* ---------- Promise ---------- */
-/* Gradien vertikal dengan ujung dalam px: teks putih selalu di bagian biru, teks gelap di bagian terang */
+/* Panel biru polos, semua teks putih; kartu di dalamnya putih. Cukup dua warna supaya tenang dilihat */
 .promise-panel {
-  --panel-fade: 480px;
   position: relative; overflow: hidden; display: grid; gap: 32px;
   padding: clamp(32px, 5vw, 72px) clamp(16px, 5vw, 72px);
   border-radius: clamp(24px, 3vw, 40px);
-  background: linear-gradient(180deg, var(--blue) 0, var(--cyan) var(--panel-fade));
+  background: var(--blue);
   color: #fff;
 }
-.promise-copy .kicker { color: #fff; }
+.promise-copy .kicker { color: rgba(255, 255, 255, .75); }
 .promise h2 { font-size: clamp(48px, 6.4vw, 92px); margin-bottom: 28px; }
-.promise-ink { display: block; color: var(--navy); }
-.promise-lead { font-size: clamp(17px, 1.5vw, 20px); font-weight: 500; color: var(--navy); max-width: 520px; margin-bottom: 20px; }
-.promise-serve { font-size: 15px; color: var(--navy); }
-/* Kartu gelap: memakai .tone-dark */
+.promise-ink { display: block; font-style: italic; }
+.promise-lead { font-size: clamp(17px, 1.5vw, 20px); color: rgba(255, 255, 255, .85); max-width: 520px; margin-bottom: 20px; }
+.promise-serve { font-size: 15px; color: rgba(255, 255, 255, .75); }
+.promise-serve strong { color: #fff; }
+/* Kartu putih: memakai .tone-light */
 .promise-card {
   border-radius: 28px; padding: clamp(20px, 3.4vw, 40px);
-  border: 1px solid rgba(255, 255, 255, .08); box-shadow: 0 40px 80px -40px rgba(5, 6, 26, .7);
+  box-shadow: 0 40px 80px -40px rgba(5, 6, 26, .55);
 }
 .promise-card h3 { font-size: clamp(30px, 2.6vw, 38px); margin-bottom: 24px; }
 .promise-card .ticks { margin-bottom: 28px; }
@@ -624,7 +624,7 @@ section { padding-block: clamp(64px, 9vw, 120px); }
   .site-header:not(.is-scrolled) .main-nav a:not(.btn):hover { background: rgba(12, 13, 26, .06); }
   .pain-grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 64px; align-items: start; }
   .pain .section-head, .faq .section-head { position: sticky; top: calc(var(--header-h) + 40px); margin-bottom: 0; }
-  .promise-panel { --panel-fade: 720px; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: start; }
+  .promise-panel { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: start; }
   .faq-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; }
   .final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
   .wa-float { width: 124px; height: 124px; right: 28px; bottom: 28px; }
