@@ -31,5 +31,5 @@ Catatan keputusan penting untuk landing page (`index.html`). Update setiap ada r
 
 ## Teknis
 
-- Branch kerja: `redesign-oob`. Deploy via Cloudflare Pages.
+- Hanya satu branch: `main`. Setiap push ke `main` langsung di-deploy ke production via Cloudflare Pages. Jangan buat branch lain.
 - Setelah deploy, hard refresh (Ctrl+Shift+R) untuk menghindari tampilan versi lama dari cache.
