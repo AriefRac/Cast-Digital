@@ -199,7 +199,8 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .tags li { font-size: 11px; letter-spacing: .12em; line-height: 1.2; padding: 9px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, currentColor 24%, transparent); }
 
 /* ---------- Header ---------- */
-/* Header selalu di atas biru: transparan di atas hero, jadi bar biru setelah scroll (supaya terbaca di bidang putih) */
+/* Di atas hero terang header transparan dengan logo biru & teks gelap.
+   Setelah scroll jadi bar biru glass dengan logo putih (supaya terbaca di bidang putih maupun biru). */
 .site-header { position: sticky; top: 0; z-index: 100; padding-top: env(safe-area-inset-top, 0px); }
 .site-header::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
@@ -210,8 +211,10 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 }
 .site-header.is-scrolled::before { opacity: 1; }
 .header-inner { position: relative; height: var(--header-h); display: flex; align-items: center; gap: 20px; }
-.brand { flex: none; }
-.brand img { height: 40px; width: auto; }
+.brand { flex: none; display: grid; }
+.brand img { grid-area: 1 / 1; height: 40px; width: auto; transition: opacity .3s; }
+.site-header:not(.is-scrolled) .brand-white,
+.site-header.is-scrolled .brand-blue { opacity: 0; }
 .main-nav { margin-left: auto; display: flex; align-items: center; gap: 2px; }
 .main-nav a:not(.btn) { padding: 10px 14px; border-radius: 999px; font-size: 12px; transition: background-color .2s, color .2s; }
 .main-nav a:not(.btn):hover { background: rgba(255, 255, 255, .1); color: var(--accent); }
@@ -219,15 +222,17 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 .burger { display: none; }
 
 /* ---------- Hero ---------- */
-/* Hero ditarik ke atas di bawah header transparan, supaya glow-nya ikut mengisi area header */
+/* Hero ditarik ke atas di bawah header transparan, supaya gradiennya ikut mengisi area header.
+   Latar: gradien brand biru → cyan (atas ke bawah) ditutup lapisan putih yang memudar ke kanan,
+   jadi teks di kiri tetap di atas bidang hampir putih. Di HP lapisan putihnya memudar ke bawah (lihat Responsive). */
 .hero {
   --header-total: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+  --hero-wash: linear-gradient(90deg, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .82) 45%, rgba(255, 255, 255, .35) 100%);
   margin-top: calc(-1 * var(--header-total));
-  padding-block: calc(var(--header-total) + clamp(24px, 4vw, 56px)) clamp(56px, 8vw, 104px);
+  padding-top: calc(var(--header-total) + clamp(24px, 4vw, 56px));
+  padding-bottom: 0;
   overflow-x: clip;
-  background-image:
-    radial-gradient(52% 58% at 100% 0%, color-mix(in srgb, var(--cyan) 34%, transparent), transparent 72%),
-    radial-gradient(48% 60% at 0% 38%, color-mix(in srgb, var(--navy) 34%, transparent), transparent 72%);
+  background-image: var(--hero-wash), linear-gradient(180deg, var(--blue), var(--cyan));
 }
 .hero-grid { display: grid; gap: clamp(40px, 6vw, 56px); align-items: center; }
 .eyebrow {
@@ -301,10 +306,11 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 
 /* ---------- Audience band ---------- */
 /* Pita dimiringkan; lebar 110% dipotong oleh overflow pembungkus, jadi tidak memicu scroll horizontal.
-   Latarnya separuh biru separuh putih, jadi pita menempel di sambungan hero dan section klien. */
+   Pita ada di dalam hero: separuh atas latarnya transparan (gradien hero), separuh bawah putih
+   seperti section klien, jadi pita menempel di sambungan keduanya. */
 .audience-band {
-  overflow: hidden; padding-block: calc(2vw + 12px);
-  background: linear-gradient(180deg, var(--blue) 50%, #fff 50%);
+  overflow: hidden; padding-block: calc(2vw + 12px); margin-top: clamp(56px, 8vw, 104px);
+  background: linear-gradient(180deg, transparent 50%, #fff 50%);
 }
 .band-strip {
   width: 110%; margin-left: -5%; padding-block: 14px 12px;
@@ -599,6 +605,12 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 }
 
 @media (min-width: 961px) {
+  /* Nav desktop di atas hero terang: teks gelap, tombol biru */
+  .site-header:not(.is-scrolled) .main-nav {
+    --accent: var(--blue); --accent-ink: #fff; --btn-hover: var(--navy);
+    color: var(--ink);
+  }
+  .site-header:not(.is-scrolled) .main-nav a:not(.btn):hover { background: rgba(12, 13, 26, .06); }
   .pain-grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 64px; align-items: start; }
   .pain .section-head, .faq .section-head { position: sticky; top: calc(var(--header-h) + 40px); margin-bottom: 0; }
   .promise-panel { --panel-fade: 720px; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: start; }
@@ -617,6 +629,11 @@ section { padding-block: clamp(64px, 9vw, 120px); }
 @media (max-width: 1080px) {
 }
 
+@media (max-width: 1023px) {
+  /* Hero bertumpuk: lapisan putih memudar ke bawah, jadi teks di atas tetap di bidang terang dan HP di bawah di atas biru-cyan */
+  .hero { --hero-wash: linear-gradient(180deg, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .82) 42%, rgba(255, 255, 255, .3) 100%); }
+}
+
 @media (max-width: 960px) {
   :root { --header-h: 68px; }
   .brand img { height: 34px; }
@@ -626,6 +643,8 @@ section { padding-block: clamp(64px, 9vw, 120px); }
     -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); cursor: pointer;
   }
   .burger span { display: block; width: 18px; height: 2px; background: #fff; transition: transform .25s; }
+  .site-header:not(.is-scrolled) .burger { border-color: rgba(12, 13, 26, .1); background: rgba(255, 255, 255, .62); }
+  .site-header:not(.is-scrolled) .burger span { background: var(--ink); }
   .burger[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
   .burger[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
   .main-nav {

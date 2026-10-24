@@ -5,15 +5,15 @@ Catatan keputusan penting untuk landing page (`index.html`). Update setiap ada r
 ## Desain
 
 - **Gaya yang dipakai: desain OOB** — bold condensed (Archivo + DM Mono), section biru brand `#2230F2` dan putih, aksen cyan.
-  - Revisi "hero terang + section Tentang + tab karya" **ditolak** (dinilai jelek). Jangan dipakai lagi tanpa persetujuan.
+  - Revisi "section Tentang + tab karya" **ditolak** (dinilai jelek). Jangan dipakai lagi tanpa persetujuan.
+  - **Hero memakai gradien terang:** putih di kiri memudar ke biru → cyan di kanan/bawah (di HP memudar ke bawah), teks gelap. Pita audiens ada di ujung bawah hero.
   - Versi cream lama juga tidak dipakai.
-- **Navbar:** transparan di atas hero; setelah scroll jadi **satu bar glass biru full-width**. **Jangan** ada kapsul/pill glass terpisah di sekitar menu di atas bar (tampak "double").
+- **Navbar:** transparan di atas hero (logo biru, teks gelap); setelah scroll jadi **satu bar glass biru full-width**. **Jangan** ada kapsul/pill glass terpisah di sekitar menu di atas bar (tampak "double").
 - **Background section selang-seling biru ↔ putih** (class `.tone-blue` / `.tone-light`). Dua section bersebelahan yang tampil tidak boleh sama warnanya. Urutan saat ini:
 
   | Section | Tone |
   |---|---|
-  | Hero | biru |
-  | Audience band | cyan |
+  | Hero | gradien terang (putih → biru/cyan) + pita audiens cyan |
   | Klien | putih |
   | Masalah (pain) | biru |
   | Layanan | putih |
