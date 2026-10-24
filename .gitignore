@@ -13,6 +13,3 @@ _site/
 # Env / secrets
 .env
 .env.*
-
-# Screenshot referensi desain (hanya untuk lokal, jangan di-commit)
-ref/

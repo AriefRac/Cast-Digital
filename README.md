@@ -1,4 +1,4 @@
-# Landing Page CAST Digital
+# CAST Digital — Landing Page
 
 Landing page CAST Digital (creative agency, Kota Serang). Tujuan utama halaman: mengarahkan pengunjung untuk chat WhatsApp.
 
@@ -13,69 +13,16 @@ build.sh              Menyiapkan folder _site untuk deploy + mengisi domain dari
 _headers              Header keamanan (CSP, dll.) & cache untuk Cloudflare Pages
 robots.txt, sitemap.xml
 assets/
-  css/main.css        Seluruh style, token warna (palet), @font-face
-  fonts/              Archivo, DM Mono & DM Sans (woff2) + lisensi OFL (wajib ikut)
+  css/main.css        Seluruh style, token warna brand, @font-face
+  fonts/              DM Sans & DM Serif Display (woff2) + lisensi OFL (wajib ikut)
   js/config.js        Nomor WA dan template pesan WA
   js/wa.js            Pembuat link WA + tracking klik
   js/main.js          Navigasi, animasi, video, dialog karya, FAQ, form konsultasi
-  img/                Gambar WebP: brand, clients, services, work, posters
+  img/                Gambar WebP: brand, clients, team, bts, services, work, posters
   video/              Video lengkap (hero & yang dibuka saat kartu karya diklik)
   video/previews/     Klip 8 detik tanpa suara untuk kartu Hasil Karya
 docs/brand/           Brand guideline & company profile (sumber, tidak ikut dipublikasikan)
-ref/                  (lokal saja, di .gitignore) Screenshot referensi desain
 ```
-
-## Gaya visual
-
-Hero memakai latar gradien terang: gradien brand biru → cyan (atas ke bawah) yang ditutup lapisan putih memudar ke kanan (di HP memudar ke bawah), jadi teks di kiri tetap di atas bidang hampir putih. Setelah hero, latar belang: setiap section bergantian biru brand (#2230F2) dan putih, ditutup footer biru. Pita miring "For UMKM" ada di bagian bawah hero dan menempel di sambungan hero dan section klien biru. Headline kapital condensed, label mono kapital, dan satu warna aksen untuk tombol utama, label, dan angka: cyan di bidang biru, biru di bidang putih.
-
-### Tone section (latar belang)
-
-Warna latar diatur lewat kelas di setiap `<section>` (dan `<footer>`):
-
-| Kelas | Latar | Teks | Aksen & tombol utama |
-|---|---|---|---|
-| `tone-blue` | biru #2230F2 | putih | cyan, teks tombol gelap |
-| `tone-light` | putih | gelap (`--ink`) | biru, teks tombol putih |
-| `tone-dark` | navy #05061A | putih | cyan (dipakai untuk section konsultasi dan kartu gelap di panel "Starting from any price") |
-
-Kelas tone juga mengganti token `--fg`, `--text-2`, `--accent`, `--accent-ink`, `--btn-hover`, `--line`, `--glass`, dan `--logo-filter`, jadi komponen di dalamnya (tombol, garis, kartu, logo klien) otomatis menyesuaikan. Kelas tone boleh dipakai di dalam section lain; contohnya kartu chat di section "Kenal sama situasi ini?" memakai `tone-light` di atas section biru.
-
-Urutan saat ini: hero gradien terang (`tone-light`) → klien biru → tentang kami putih → masalah biru → layanan putih → hasil karya biru → kenapa CAST putih → proses biru → FAQ putih → konsultasi navy (`tone-dark`) → footer biru. Section `#studi-kasus` (`tone-light`) dan `#testimoni` (`tone-blue`) masih tersembunyi; saat ditampilkan, tone section sesudahnya perlu ditukar supaya belangnya tetap berselang-seling.
-
-Header transparan di atas hero dengan logo biru (`logo-blue.svg`) dan teks gelap. Setelah halaman di-scroll, header menjadi bar biru solid dengan logo putih (`logo-white.svg`), jadi tetap terbaca di atas section putih maupun biru. Kedua logo ada di `.brand` dan ditukar lewat CSS.
-
-### Font
-
-Semua font di-host sendiri di `assets/fonts/` karena CSP hanya mengizinkan font dari domain sendiri.
-
-| Peran | Font | File | Sumber |
-|---|---|---|---|
-| Headline | Archivo variable, dipakai dengan `font-stretch: 62%`, weight 800, kapital | `archivo-latin-wdth.woff2` | `npm pack @fontsource-variable/archivo` → `files/archivo-latin-wdth-normal.woff2` |
-| Label | DM Mono 500 | `dm-mono-latin-500.woff2` | `npm pack @fontsource/dm-mono` → `files/dm-mono-latin-500-normal.woff2` |
-| Body | DM Sans (font brand) | `dm-sans-latin.woff2` | sudah ada sejak awal |
-
-- Lisensi masing-masing (SIL OFL) ada di `assets/fonts/OFL-*.txt` dan wajib ikut dipublikasikan.
-- `@font-face` Archivo wajib memuat `font-stretch: 62% 125%` dan `font-weight: 100 900`; tanpa itu browser tidak memakai sumbu lebar (wdth) font variabel.
-- Subset latin Archivo tidak punya tanda hubung tak-putus (U+2011). Untuk kata berhubung yang tidak boleh patah, pakai tanda hubung biasa di dalam `<span class="nowrap">`.
-- Headline font brand (Boston Angel) tidak dipakai di desain ini; gayanya diganti headline condensed. Bricolage Grotesque juga sempat diuji, tapi tidak dipakai karena garis di dalam hurufnya tumpang-tindih saat diberi outline.
-- Kalau font diganti, sesuaikan juga `<link rel="preload">` di `<head>` `index.html`.
-
-### Mengganti palet
-
-Warna brand diatur lewat token di `:root` bagian atas `assets/css/main.css`:
-
-- `--blue` (#2230F2): latar section `tone-blue`, aksen di bidang putih, bubble chat CAST, pilihan di form, awal gradien panel "Starting from any price".
-- `--cyan` (#25F8FF): aksen di bidang biru (tombol utama, label, angka), pita "For UMKM", akhir gradien panel. Jangan dipakai sebagai teks di atas putih karena kontrasnya terlalu rendah.
-- `--navy` (#05061A): "hitam" brand untuk teks gelap di atas cyan, kartu gelap, menu HP, dan badge WhatsApp.
-
-Token per tone (`--fg`, `--accent`, dst.) ada tepat di bawah `:root`; lihat bagian Tone section di atas.
-
-Palet alternatif (ungu #7A2CFF + lime #D4FF3A) sudah ditulis sebagai komentar di `:root`; tinggal tukar dua barisnya. Setelah mengganti palet, cek ulang kontras teks (minimal WCAG AA): teks putih dan aksen di atas `--blue`, `--blue` di atas putih, serta panel gradien (teks putih di bagian atas panel, teks gelap di bagian bawah).
-
-### Logo klien
-
-Logo di strip klien diwarnai satu warna lewat CSS (token `--logo-filter`: hitam di bidang putih, putih di bidang biru), jadi file logo harus berlatar transparan. Logo berlatar solid akan tampil sebagai kotak polos. Lima logo yang awalnya berlatar solid sudah dibuatkan versi transparan (`*-v2.webp`).
 
 ## Menjalankan lokal
 
@@ -88,11 +35,11 @@ Buka http://localhost:8000. Alamat `castdigital.example` di `<head>`, `robots.tx
 ## Tugas umum
 
 - **Ganti nomor / isi pesan WhatsApp:** `assets/js/config.js`. Setiap tombol punya atribut `data-wa="..."` yang menentukan template pesannya.
-- **Tambah logo klien:** WebP berlatar transparan setinggi ±112 px di `assets/img/clients/` (lihat bagian Logo klien di atas), lalu tambahkan `<li>` di kedua `<ul class="logo-track">` (yang kedua duplikat untuk animasi). Klien tanpa logo memakai `<li class="wordmark">Nama</li>`.
-- **Tambah hasil karya:** section `#karya` dibagi tiga tab: Reels, Design, dan Entertainment. Salin satu `<button class="work-card">` ke panel yang sesuai (`#panel-reels`, `#panel-design`, atau `#panel-entertainment`), lalu naikkan angka `.work-tab-count` di tab-nya. Kartu video: `data-media` = video lengkap di `assets/video/` (≤ 5 MB), `data-src` = klip preview di `assets/video/previews/`, `poster` = WebP di `assets/img/posters/`. Kartu gambar cukup `<img>` dan `data-media` ke file gambarnya.
+- **Tambah logo klien:** WebP transparan setinggi ±112 px di `assets/img/clients/`, lalu tambahkan `<li>` di kedua `<ul class="logo-track">` (yang kedua duplikat untuk animasi). Klien tanpa logo memakai `<li class="wordmark">Nama</li>`.
+- **Tambah hasil karya:** salin satu `<button class="work-card">` di section `#karya`. `data-media` = video lengkap di `assets/video/` (≤ 5 MB), `data-src` = klip preview di `assets/video/previews/`, `poster` = WebP di `assets/img/posters/`.
 - **Mengganti gambar/video:** pakai nama file baru. Gambar & video di-cache browser 7 hari, jadi file dengan nama sama bisa tetap tampil versi lama.
-- **Testimoni:** section `#testimoni` disembunyikan (atribut `hidden`) karena isinya masih dummy. Setelah ada testimoni asli (dan izin) dari klien, edit `<figure class="testi">`, hapus atribut `hidden`, lalu tambahkan lagi link "Testimoni" di navigasi footer. Sesuaikan juga tone section-nya (lihat Tone section).
-- **Studi kasus:** section `#studi-kasus` (setelah Hasil Karya) berisi 3 kartu: iSell, Abinaya Desain, dan FKP Kota Serang. Section ini sengaja disembunyikan (atribut `hidden`) sampai ada data hasil asli dari klien. Setiap metrik masih berupa placeholder `[angka]`; jangan diisi angka perkiraan. Cara menampilkan: isi angka asli yang sudah disetujui klien, cek ulang kalimat tantangan bersama klien, lalu hapus atribut `hidden` dan sesuaikan tone section-nya (lihat Tone section).
+- **Testimoni:** edit `<figure class="testi">` di section `#testimoni`. Isi saat ini masih dummy; ganti dengan testimoni asli (dan izin) dari klien.
+- **Font Boston Angel:** butuh lisensi webfont. Taruh `boston-angel.woff2` di `assets/fonts/` lalu aktifkan blok `@font-face`-nya di `main.css`. Sebelum itu, headline memakai DM Serif Display.
 
 ## Tracking & CSP
 
@@ -133,9 +80,9 @@ GitHub Pages tidak dipakai: aturannya melarang dipakai untuk menjalankan bisnis 
 
 ## Sebelum dipromosikan
 
-- [ ] Testimoni dummy diganti testimoni asli + izin klien (section masih `hidden`).
-- [ ] Data hasil asli untuk section studi kasus (section masih `hidden`).
+- [ ] Testimoni dummy diganti testimoni asli + izin klien.
 - [ ] Izin klien untuk logo dan karya yang ditampilkan.
+- [ ] Izin anggota tim untuk foto dan nama (UU PDP No. 27/2022).
 - [ ] Musik di video (showreel, iSell Entertainment, Abinaya, Enter English) berlisensi untuk dipakai di website. Audio dari library Instagram/TikTok hanya berlisensi di platform tersebut; kalau ragu, bisukan versi website.
 - [ ] Project Supabase lama dihapus (tidak dipakai lagi).
 - [ ] Google Business Profile CAST Digital dibuat/diklaim dan dihubungkan ke domain.
